@@ -30,6 +30,12 @@ Lien :
 
 // todo : tests effectués sur le code & sur le projet 
 
+
+
+Nos exigences en terme de _gestion des logs_ nous ont permises de procéder au _debug_ et aux tests avec une visibilité en détails sur les opérations effectués par les instances de notre logiciel. Ces dernières sont décrites plus en détails dans le document de conception technique.
+
+
+
 #### Vérification des protocoles
 
 - Indication de où trouver les rapports de contrôles sur Git / Google Drive ... pour que le professeur puisse voir le suivi (ajouter les liens vers Git et/ou Drive)
