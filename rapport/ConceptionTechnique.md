@@ -119,11 +119,19 @@ Toutes les actions effectuées par le professeur (GUI) utilisent les fonctions d
 
 #### Serveur
 
-Le serveur est multi-threadé et prend plusieurs clients en charge en parallèle. Il est implémenté pour gérer et interpréter les commandes qu'il reçoit. 
+Le serveur implémente une logique multi-thread qui écoute les connexion de clients et leur dédie ensuite un _Worker_ qui va s'occuper d'une machine en particulier et recevoir les commandes émises par cette dernière. Le serveur dispose de _Handlers_ pour les commandes existantes qui vont procéder aux vérifications et opérations nécessaires puis répondre au client. Le détails des opérations, réponses et code d'erreur est disponible dans nos spécifications de protocole.
 
-Il utilise les logs pour avertir en cas d'erreur (mauvais paramètre, mauvais SID, mauvaise IP, ...). 
+Le serveur conserve également une liste de tous les threads existants et des machines connectées, ainsi le _Worker_ qui reçoit une demande d'une machine peut contacter celui de la machine cible si cette dernière est connectée (typiquement pour une demande de contrôle à distance).
 
-// TO COMPLETE
+Parmi les vérifications effectuées sont notamment traités les formats des SIDs et des adresses IP, le nombre de paramètre, le rôle du demandeur. Le serveur dispose d'une liste de message d'erreur (encore une fois selon spécifications). Les ouvertures de connexion ainsi que les erreurs sont également inscrites dans le système de logs.
+
+### Gestion des logs // todo : déplacer peut-être ?
+
+Nous avons également mis l'accent sur la gestion des logs, outil précieux pour le _debug_ mais également point nécessaire pour tout logiciel qui passe en production.
+
+À cet effet nous avons créer une classe dédiée, qui gère l'écriture dans trois fichiers qui correspondent à trois _niveaux_ de logs qui sont les informations (_Info_), les avertissements (_Warning_) et les erreurs (_Error_). L'importance du message est gérée via ce niveau et le fichier de destination est choisi en conséquence, le log est inscrit au format `Date : Message`.   
+
+
 
 ## Conclusion
 
