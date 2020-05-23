@@ -40,11 +40,10 @@ Pare-feu
 
 Active Directory
 
-- Groupe professeur
-- Groupe élève
-- 
+nécessite avoir une infrastructure Active Directory qui contient les groupes ci-dessous. Ils sont remplis selon leur nom. (script dispo en annexe)
 
-//Faire un script qui génère les groupes professeur/élève + des utilisateurs dedans
+- Groupe **professeur** (nom exacte : )
+- Groupe **élève** (nom exacte : )
 
 
 
@@ -56,7 +55,17 @@ Active Directory
 
 
 
+Le lancement de l'application se fait à l'aide de la commande suivante et à l'emplacement ou se situe exécutable :
+
+``.\PRO.ex [server|professeur|eleve] <ipServer> <Port>``
+
+
+
+
+
 //Serveur
+
+Lancement : ``.\PRO.exe server 7777``
 
 
 
@@ -64,17 +73,25 @@ Active Directory
 
 faire que le programme se lance automatiquement au démarrage
 
+//script ? GPO? Service ? qui lance dès l'ouverture de la session élève l'application. 
+
+``.\PRO.exe eleve 192.168.0.1 7777``
+
 
 
 //Client - professeur 
 
 Raccourci sur le bureau du prof
 
+``.\PRO.exe professeur 192.168.0.1 7777``
+
 
 
 ### Annexes
 
-- Script de génération d'utilisateurs/groupes pour l'AD  [accès au script]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/blob/master/manuelInstallation/scriptAD.ps) 
+- Script de génération d'utilisateurs/groupes pour l'AD  [accès au script]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/blob/master/manuelInstallation/script_AD.ps) 
+
+  Ce script est destiné à être lancé depuis le bureau. Il génère les utilisateurs présents dans le [fichier csv]()  
 
 
 
