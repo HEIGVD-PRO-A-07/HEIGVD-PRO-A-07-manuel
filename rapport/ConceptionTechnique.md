@@ -37,7 +37,7 @@ Le blocage de session permet aussi de forcer les élèves à rester attentif à 
 
 Au niveau de l'infrastructure nécessaire, il ne faut que le matériel qu'on peut trouver habituellement dans une salle d'informatique et dans une école. Nous utilisons les groupes de l'AD pour la surveillance des postes. Le serveur de l'école sera utilisé pour l'envoi et la réception des captures d'écran.
 
-// todo : à compléter pour le serveur
+**// todo : à compléter pour le serveur**
 
 ## Analyse
 
@@ -53,7 +53,7 @@ Pour obtenir une application fonctionnelle, nous avons fixé plusieurs objectifs
 
 ### Description de l'existant
 
-// A COMPLETER: Ici on met les recherches effectuées, et documente ce qu'on a utilisé d'existant.
+**// A COMPLETER: Ici on met les recherches effectuées, et documente ce qu'on a utilisé d'existant.**
 
 // DONE for @Sicriss, @dosseggegw1, @CassandreWoj
 
@@ -67,11 +67,13 @@ Naturellement le C# possède une implémentation native des threads que nous avo
 
 ##### Sécurité
 
-Comme mentionné dans le cahier des charges, il était impératif de se baser sur des fonctions existantes pour la sécurité qui n'est pas un domaine que l'on pouvait se permettre de ré-implémenter. Bien heureusement ...[todo selon choix]
+Comme mentionné dans le cahier des charges, il était impératif de se baser sur des fonctions existantes pour la sécurité qui n'est pas un domaine que l'on pouvait se permettre de ré-implémenter.
+
+ **//todo selon choix**
 
 ##### Capture d'écran
 
-// todo
+La base de notre projet repose sur des captures d'écran faites sur les postes des élèves. Il nous a donc fallu implémenter la prise de ces captures. Nous nous sommes basés pour cela sur du code déjà [existant](https://www.developerfusion.com/code/4630/capture-a-screen-shot/). 
 
 ##### Envoi/réception d'images
 
@@ -79,11 +81,11 @@ Pour implémenter le code permettant d'envoyer les captures d'écran depuis le P
 
 ##### Blocage d'entrées souris/clavier
 
-// todo
+**// todo**
 
 ## Implémentation
 
-// todo : ici on documente tout ce qui est des choix personnels d'implémentation + spécificités techniques
+**// todo : ici on documente tout ce qui est des choix personnels d'implémentation + spécificités techniques**
 
 Nous avons réalisé notre projet entièrement en C# et sur l'IDE VisualStudio. Cela nous a permis de consulter la documentation .NET existante de Microsoft sur les différents sujets abordés dans le cadre de cette application. 
 
@@ -115,7 +117,7 @@ Nous avons implémenté l'application côté client avec un système de callback
 
 Toutes les actions effectuées par le professeur (GUI) utilisent les fonctions de callback. 
 
-// TO COMPLETE please ...
+**// TO COMPLETE **
 
 #### Serveur
 
@@ -123,15 +125,13 @@ Le serveur est multi-threadé et prend plusieurs clients en charge en parallèle
 
 Il utilise les logs pour avertir en cas d'erreur (mauvais paramètre, mauvais SID, mauvaise IP, ...). 
 
-// TO COMPLETE
+**// TO COMPLETE**
 
 ## Conclusion
 
-// todo : faire un point sur l'avancement général du projet, qu'est ce qui est fonctionnel, qu'est ce qui ne l'est pas, où on en est dans les points nice to have du CC, pourquoi (retards, difficultés techniques, ...) ...
+**// CHECK : chiffrement implémenté ou non ??**
 
-// CHECK : chiffrement implémenté ou non ??
-
-A la fin de ce projet, nous avons obtenu une application fonctionnelle permettant de prendre des captures d'écran et de les envoyer à travers un serveur. **Nous pouvons aussi bloquer/débloquer les inputs de la souris et du clavier sur les postes élèves** en activant ou désactivant un bouton sur l'interface professeur. 
+A la fin de ce projet, nous avons obtenu une application fonctionnelle permettant de prendre des captures d'écran et de les envoyer à travers un serveur. Nous pouvons aussi bloquer/débloquer les inputs de la souris et du clavier sur les postes élèves en activant ou désactivant un bouton sur l'interface professeur. 
 
 Nous n'avons malheureusement pas eu le temps de traiter tous les points initialement prévus "nice to have" de notre cahier des charges. Cependant, nous obtenons quand même une application fonctionnelle réalisée entièrement par nos soins. 
 
@@ -146,16 +146,26 @@ Nous sommes arrivés au bout de notre itération 1 qui contient les points suiva
 Les points "nice to have" implémentés sont :
 
 - blocage/déblocage des inputs souris/clavier
+- historique des captures d'écran sauvegardé **partiellement pour l'instant**
 
 Les points "nice to have" non implémentés faisant partie de l'itération 2 sont les suivants : 
 
 - chiffrement des connexions client-serveur
 - prise de contrôle de la session élève à distance
-- historique des captures d'écran sauvegardé
 - envoi de fichiers entre les postes élève et professeur
 
 ## Références
 
-// todo : ajout des sites web utilisés (réutiliser les liens mis dans "Description de l'existant")
-
 GUI : https://www.wideagency.ch/articles/les-vraies-valeurs-de-lux-wide
+
+Sockets : 
+
+- https://docs.microsoft.com/en-us/dotnet/api/system.net.sockets?view=netcore-3.1
+
+- https://www.c-sharpcorner.com/article/socket-programming-in-C-Sharp/
+
+Multi-threading : https://docs.microsoft.com/en-us/dotnet/api/system.threading.thread?view=netcore-3.1
+
+Capture d'écran : https://www.developerfusion.com/code/4630/capture-a-screen-shot/
+
+**// todo : ajout des sites web utilisés**
