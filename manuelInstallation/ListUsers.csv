@@ -1,0 +1,9 @@
+FirstName;LastName;SAM;OU;Password;Group
+Nenad;Rajic;nenad.r;CN=Users,DC=PRO,DC=local;Password1$;Eleves
+Cassandre;Wojciechowski;cassandre.w;CN=Users,DC=PRO,DC=local;Password1$;Eleves
+Gabriel;Roch;gabriel.r;CN=Users,DC=PRO,DC=local;Password1$;Eleves
+Gwendoline;Dossegger;gwendoline.d;CN=Users,DC=PRO,DC=local;Password1$;Eleves
+Laurent;Scherer;laurent.s;CN=Users,DC=PRO,DC=local;Password1$;Eleves
+Laurent;Thoeny;laurent.t;CN=Users,DC=PRO,DC=local;Password1$;Eleves
+Jean-Marc;Bost;jeanmarc.b;CN=Users,DC=PRO,DC=local;Password1$;Professeurs
+Alex;Terieur;alex.t;CN=Users,DC=PRO,DC=local;Password1$;Professeurs
