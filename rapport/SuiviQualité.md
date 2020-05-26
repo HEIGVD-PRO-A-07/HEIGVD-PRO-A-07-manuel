@@ -22,20 +22,16 @@ Au début du projet, nous avons mis en place un document contenant toutes les sp
 
 Nous avons donc pu nous baser sur ses spécifications. 
 
-Lien : 
-
-[Spécifications du projet]: https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07/blob/master/specs.md
+Lien : [Spécifications](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07/blob/master/specs.md)
 
 #### Contrôles effectués
 
-// todo : tests effectués sur le code & sur le projet 
+**// todo : tests effectués sur le code & sur le projet **
 
-
-
-Nos exigences en terme de _gestion des logs_ nous ont permises de procéder au _debug_ et aux tests avec une visibilité en détails sur les opérations effectués par les instances de notre logiciel. Ces dernières sont décrites plus en détails dans le document de conception technique.
-
-
+Nos exigences en terme de _gestion des logs_ nous ont permis de procéder au _debug_ et aux tests avec une visibilité en détails sur les opérations effectuées par les instances de notre logiciel. Ces dernières sont décrites plus en détails dans le document "Conception technique".
 
 #### Vérification des protocoles
+
+**// todo**
 
 - Indication de où trouver les rapports de contrôles sur Git / Google Drive ... pour que le professeur puisse voir le suivi (ajouter les liens vers Git et/ou Drive)
