@@ -35,7 +35,9 @@ Le blocage de session permet aussi de forcer les élèves à rester attentif à 
 
 #### Prérequis
 
-Au niveau de l'infrastructure nécessaire, il ne faut que le matériel qu'on peut trouver habituellement dans une salle d'informatique et dans une école. Nous utilisons les groupes de l'AD pour la surveillance des postes. Le serveur de l'école sera utilisé pour l'envoi et la réception des captures d'écran.
+Au niveau de l'infrastructure nécessaire, il ne faut que le matériel qu'on peut trouver habituellement dans une salle d'informatique et dans une école. 
+Nous utilisons des groupes Active Directory pour la récupération des rôles / droits / groupes / etc .. (notamment les groupes "Professeurs" et "Elèves" mais également des groupes de machines pour les "salles").
+Notre logiciel serveur peut être deployé sur le serveur AD de l'école mais ce n'est pas obligatoire. Il peut être installé sur une machine dédiée (membre de l'AD) si une répartition des fonctions est souhaitée. 
 
 **// todo : à compléter pour le serveur**
 
