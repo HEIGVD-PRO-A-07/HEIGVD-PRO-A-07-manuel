@@ -4,36 +4,39 @@
 
 ``` bash
 Projet [PRO]: 
-│   LogHelper.cs
-│   Main.cs
-│   Program.cs
+├───Phase-1
+│       Préférences de projets.md
 │
-├──+bin
-├──+obj
-├──+Properties
+├───PRO
+│   │   Main.cs
+│   │   Main.Designer.cs
+│   │   Main.resx
+│   │   Program.cs
+│   │
+│   ├──+bin
+│   ├──+obj
+│   ├──+Properties
+│   │
+│   ├───protocol
+│   │       Client.cs
+│   │       Protocol.cs
+│   │       Server.cs
+│   │
+│   └───Utils
+│           LogHelper.cs
+│           LogLevel.cs
+│           ScreenCapture.cs
 │
-├───protocol
-│       Client.cs
-│       Protocol.cs
-│       Server.cs
-│
-├───Resources
-│       windows - Copie.jpg
-│       windows.jpg
-│       windows.png
-│       windows1.jpg
-│
-└───Utils
-        ScreenCapture.cs
+└───ProTests
+    │   FirstTests.cs
+    │
+    ├──+bin
+    └──+obj
 ```
 
-### Contenu du code
+### Contenu du code 
 
-##### LogHelper.cs : 
-
-Création et écriture de logs (informations, warnings, erreurs) pour garder trace des actions du serveur. 
-
-##### Main.cs :
+##### Main.cs & Main.Designer.cs & Main.resx :
 
 Affichage graphique du projet côté client "Professeur" avec la fenêtre Windows et les boutons nécessaires pour les actions prévues.
 
@@ -55,6 +58,18 @@ Ce fichier contient l'implémentation du protocole. On y trouve toutes les const
 
 Ce fichier contient toute la gestion du projet côté serveur : son démarrage, la création du socket liant le client au serveur, l'implémentation de la gestion des commandes envoyées depuis le client sur le serveur, l'authentification pour la connexion et la déconnexion des utilisateurs, la gestion des groupes et des utilisateurs ainsi que la génération de logs lors d'erreurs.
 
+##### LogHelper.cs : 
+
+Création et écriture de logs (informations, warnings, erreurs) pour garder trace des actions du serveur.
+
+##### LogLevel.cs :
+
+Ce fichier contient l'énumération des différents types de logs. 
+
 ##### ScreenCapture.cs :
 
 Ce fichier contient l'implémentation permettant la génération des bitmaps à partir des captures d'écran et conversion bidirectionnelle entre bitmap et string pour l'envoi des captures.
+
+##### FirstTests.cs :
+
+Ce fichier contient les tests effectués sur le code pour vérifier son bon fonctionnement.
