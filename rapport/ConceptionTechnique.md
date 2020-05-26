@@ -85,8 +85,6 @@ Pour implémenter le code permettant d'envoyer les captures d'écran depuis le P
 
 ## Implémentation
 
-**// todo : ici on documente tout ce qui est des choix personnels d'implémentation + spécificités techniques**
-
 Nous avons réalisé notre projet entièrement en C# et sur l'IDE VisualStudio. Cela nous a permis de consulter la documentation .NET existante de Microsoft sur les différents sujets abordés dans le cadre de cette application. 
 
 #### GUI
@@ -121,11 +119,21 @@ Toutes les actions effectuées par le professeur (GUI) utilisent les fonctions d
 
 #### Serveur
 
-Le serveur est multi-threadé et prend plusieurs clients en charge en parallèle. Il est implémenté pour gérer et interpréter les commandes qu'il reçoit. 
+Le serveur implémente une logique multi-threads qui écoute les connexions de clients et leur dédie ensuite un _Worker_ qui va s'occuper d'une machine en particulier et recevoir les commandes émises par cette dernière. Le serveur dispose de _Handlers_ pour les commandes existantes qui vont procéder aux vérifications et opérations nécessaires puis répondre au client. Le détails des opérations, réponses et codes d'erreur est disponible dans nos spécifications de protocole.
 
-Il utilise les logs pour avertir en cas d'erreur (mauvais paramètre, mauvais SID, mauvaise IP, ...). 
+Le serveur conserve également une liste de tous les threads existants et des machines connectées, ainsi le _Worker_ qui reçoit une demande d'une machine peut contacter celui de la machine cible si cette dernière est connectée (typiquement pour une demande de contrôle à distance).
 
-**// TO COMPLETE**
+Parmi les vérifications effectuées sont notamment traités les formats des SIDs et des adresses IP, le nombre de paramètres, le rôle du demandeur. Le serveur dispose d'une liste de messages d'erreur (encore une fois selon spécifications). Les ouvertures de connexion ainsi que les erreurs sont également inscrites dans le système de logs.
+
+### Gestion des logs 
+
+**// déplacer le paragraphe ??**
+
+Nous avons mis l'accent sur la gestion des logs, outil précieux pour le _debug_ mais également point nécessaire pour tout logiciel qui passe en production.
+
+À cet effet nous avons créé une classe dédiée, qui gère l'écriture dans trois fichiers qui correspondent à trois _niveaux_ de logs : les informations (_Info_), les avertissements (_Warning_) et les erreurs (_Error_). L'importance du message est gérée via ce niveau et le fichier de destination est choisi en conséquence, le log est inscrit au format `Date : Message`.   
+
+
 
 ## Conclusion
 
@@ -167,5 +175,3 @@ Sockets :
 Multi-threading : https://docs.microsoft.com/en-us/dotnet/api/system.threading.thread?view=netcore-3.1
 
 Capture d'écran : https://www.developerfusion.com/code/4630/capture-a-screen-shot/
-
-**// todo : ajout des sites web utilisés**
