@@ -106,7 +106,7 @@ pour le serveur : ``.\PRO.exe serveur <Port>``
 
 ###### Serveur
 
-**TODO explication : **Lancement dès démarrage de la machine avec la commande : 
+**TODO explication :** Lancement dès démarrage de la machine avec la commande : 
 
 ``.\PRO.exe server 7777``
 
