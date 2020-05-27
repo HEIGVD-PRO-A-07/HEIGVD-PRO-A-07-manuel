@@ -23,9 +23,9 @@
 
 ### Listes des fonctionnalités contrôlées
 
-La liste ci-dessous recense l'ensemble des fonctionnalités annoncées dans le cahier des charges de ce projet. Il est possible de voir si elles sont implémentées, leur(s) critère(s) de validation ainsi que la date à laquelle elles ont été certifiée validée. Les critères de validité sont décidés avant l'implémentation de la fonctionnalité.
+La liste ci-dessous recense l'ensemble des fonctionnalités annoncées dans le cahier des charges de ce projet. Il est possible de voir si elles sont implémentées, leur(s) critère(s) de validation ainsi que la date à laquelle elles ont été certifié validées. Les critères de validité sont décidés avant l'implémentation de la fonctionnalité.
 
-Les grilles permettent donc de détailler à l'instant t les différentes options que notre application offre. Lors d'une modification qui peut potentiellement altérer la validité de la fonctionnalité, celle-ci est retestée afin de garantir que son implémentation est toujours efficace. Les tests effectuant des actions non visible dans le GUI (transmission au travers de la socket) sont vérifiés à l'aide d'un sniffer de réseau.
+Les grilles permettent donc de détailler à l'instant t les différentes options que notre application offre. Lors d'une modification qui peut potentiellement altérer la validité de la fonctionnalité, celle-ci est retestée afin de garantir que son implémentation est toujours efficace. Les tests effectuant des actions non visibles dans le GUI (transmission au travers de la socket) sont vérifiés à l'aide d'un sniffer de réseau.
 
 
 
@@ -33,9 +33,9 @@ Les grilles permettent donc de détailler à l'instant t les différentes option
 
 | Fonctionnalités à tester                            | Critère de validation                                        | Validé par | Last date |
 | --------------------------------------------------- | ------------------------------------------------------------ | :--------: | :-------: |
-| Lancement de l'application sur le Serveur           | lors de l'exécution de ``.\PRO.exe server 7777``, le processus est actif + trames de communication visible avec un sniffer |     GR     | 23.05.20  |
-| Lancement de l'application sur un client professeur | lors de l'exécution de ``.\PRO.exe professeur <ipServer> 7777``, le processus est actif + trames de communication visible avec un sniffer |     GR     | 23.05.20  |
-| Lancement de l'application sur un client élève      | lors de l'exécution de ``.\PRO.exe professeur <ipServer> 7777``, le processus est actif + trames de communication visible avec un sniffer |     GR     | 23.05.20  |
+| Lancement de l'application sur le Serveur           | lors de l'exécution de ``.\PRO.exe server 7777``, le processus est actif + trames de communication visibles avec un sniffer |     GR     | 23.05.20  |
+| Lancement de l'application sur un client professeur | lors de l'exécution de ``.\PRO.exe professeur <ipServer> 7777``, le processus est actif + trames de communication visibles avec un sniffer |     GR     | 23.05.20  |
+| Lancement de l'application sur un client élève      | lors de l'exécution de ``.\PRO.exe professeur <ipServer> 7777``, le processus est actif + trames de communication visibles avec un sniffer |     GR     | 23.05.20  |
 
 
 
@@ -43,22 +43,22 @@ Les grilles permettent donc de détailler à l'instant t les différentes option
 
 | Imp.* | Fonctionnalité à tester                                      | Critère de validation                                        | Validé par | Last date |
 | ----- | ------------------------------------------------------------ | ------------------------------------------------------------ | :--------: | --------- |
-| Oui   | Identifie un client (envoi les droits à un client)           | Envoi au client ``/yourRight <right>**``                     |            |           |
+| Oui   | Identifie un client (envoie les droits à un client)          | Envoi au client ``/yourRight <right>**``                     |            |           |
 | Oui   | Accepte la connexion d'un nouveau client élève               | Confirmation offline avec ``/received``                      |            |           |
 | Oui   | Ajoute le nouveau poste client à la liste des clients surveillés (selon précédent) | Ajout des références du poste selon implémentation           |            |           |
 | Oui   | Accepte la déconnexion d'un poste                            | Confirmation offline avec ``Received``                       |            |           |
 | Oui   | Récupération des machines d'un groupe                        | Communication avec l'AD                                      |            |           |
 | Oui   | Envoie la liste des groupes AD au GUI                        | Envoi au client ``/groups ...\n``                            |            |           |
 | Oui   | Récupération des groupes d'un utilisateur                    | Communication avec l'AD                                      |            |           |
-| Oui   | Envoi les informations d'un groupe au client professeur      | Envoi au client ``/infosGroup ...\n ``                       |            |           |
+| Oui   | Envoie les informations d'un groupe au client professeur     | Envoi au client ``/infosGroup ...\n ``                       |            |           |
 | Oui   | Récupération des screenshots envoyés par un client élève     | Envoi au client ``Received\n``                               |            |           |
 | Oui   | Gestion d'un historique de screenshots                       | Envoi au client ``/history ...\n``                           |            |           |
-| Oui   | Envoi des screenshots d'un groupe à un client Professeur (sur demande) | Envoi au client ``/screens ...\n``                           |            |           |
+| Oui   | Envoie des screenshots d'un groupe à un client Professeur (sur demande) | Envoi au client ``/screens ...\n``                           |            |           |
 | Oui   | Transmet la demande de blocage des inputs par le client professeur à un client élève | Envoi au client élève ``Lock\n``                             |            |           |
 | Oui   | Transmet la demande de blocage des inputs par le client professeur à plusieurs clients élèves | Envoi au client élève ``Lock\n``                             |            |           |
 | Oui   | Transmet la demande de déblocage des inputs par le client professeur à un client élève | Envoi au client élève ``Unlock\n``                           |            |           |
 | Oui   | Transmet la demande de déblocage des inputs par le client professeur à plusieurs clients élèves | Envoi au client élève ``Unlock\n``                           |            |           |
-| Oui   | Envoi l'historique d'un ordinateur connecté au client professeur | Le serveur répond au professeur``/history <nombre> <liste des screenshots>\n`` |            |           |
+| Oui   | Envoie l'historique d'un ordinateur connecté au client professeur | Le serveur répond au professeur``/history <nombre> <liste des screenshots>\n`` |            |           |
 | Oui   | Dans le cadre de l'historique, les screenshots datant de plus d'une minute sont effacés | Ecrasement selon l'implémentation dans le code               |            |           |
 | Oui   | Gestion des commandes mal formulées, de paramètres manquants et autres abus de droits avec des messages d'erreurs | Génère une erreur selon l'infraction : ``/error <NoErr> <errMessage>`` |            |           |
 | Non   | Chiffrement des communications                               | -                                                            |            |           |
@@ -66,7 +66,7 @@ Les grilles permettent donc de détailler à l'instant t les différentes option
 | Non   | Gestion de l'envoi de fichiers par le protocole entre un élève et un professeur | -                                                            |            |           |
 | Non   | Gestion de surveillance par plusieurs professeurs en même temps | -                                                            |            |           |
 
-*Fonctionnalité implémenté ou non
+*Fonctionnalité implémentée ou non
 
 ** le right correspond à ``student = SID élève``, ``professor = SID professeur`` ou ``non = aucun des deux précédents``
 
@@ -89,9 +89,9 @@ Les grilles permettent donc de détailler à l'instant t les différentes option
 |       | Demande de débloquer les inputs de plusieurs élèves | Professeur         | Envoi au serveur ``/unlock <sid>``                           |            |           |
 | Non   | Demande de l'historique des screenshots d'un élève  | Professeur         | Envoi au serveur ``/getHistory <sidComputer>``               |            |           |
 | Non   | Prise de contrôle d'un élève par un professeur      | Professeur / élève | voir spec.                                                   |            |           |
-| Non   | Envoi de fichiers entre le professeur et les élèves | Professeur / élève | Un professeur peut envoyé un fichier depuis son GUI aux élèves |            |           |
+| Non   | Envoi de fichiers entre le professeur et les élèves | Professeur / élève | Un professeur peut envoyer un fichier depuis son GUI aux élèves |            |           |
 
-*Fonctionnalité implémenté ou non
+*Fonctionnalité implémentée ou non
 
 
 
@@ -102,18 +102,18 @@ Les grilles permettent donc de détailler à l'instant t les différentes option
 | L'application a une interface pour un utilisateur du groupe professeur | Affichage du GUI lorsqu'un professeur lance l'application    |              |           |
 | Liste de groupes d'élèves connectés                          | L'application affiche tous les groupes d'élèves actuellement connectés |    GD GR     | 14.04.20  |
 | Mise à jour de la liste de groupes d'élèves connectés (sous fichier) | Lorsqu'on clique sur ``Mettre à jour les groupes``, la liste est mise à jour |    GD GR     | 14.04.20  |
-| Sélection d'un groupe d'élèves                               | Lorsqu'on sélectionne un groupe d'élèves, les écrans des élèves est affichés |              |           |
+| Sélection d'un groupe d'élèves                               | Lorsqu'on sélectionne un groupe d'élèves, les écrans des élèves sont affichés |              |           |
 | Affichage d'un screenshot par élève                          | Chaque écran d'élève du groupe est affiché 1x                |              |           |
 | Chaque écran d'élève a une légende avec le username de l'utilisateur | Chaque screenshot possède une légende avec le username de l'étudiant |              |           |
 | Bloque tous les inputs du groupe surveillé (sous outils)     | Tous les élèves du groupe ne peuvent plus effectuer d'inputs sur leur poste |              |           |
 | Débloque tous les inputs du groupe surveillé (sous outils)   | Tous les élèves du groupe peuvent réeffectuer des inputs sur leur poste |              |           |
 | Il est possible d'afficher un menu avec plusieurs options lorsqu'on sélectionne un élève | Lorsqu'on clique sur un screenshot d'un élève un menu s'affiche avec diverses options |    GD GR     | 15.04.20  |
 | Le username de l'élève est affiché dans le menu (cité ci-dessus) | Lorsqu'on affiche le menu de l'élève, son username est affiché |              |           |
-| Il est possible de bloquer un élève depuis le menu (cité ci-dessus) | Les inputs de l'élève sélectionné sont bloqué lors du clique sur ``Bloquer`` |              |           |
-| Il est possible de débloquer un élève depuis le menu (cité ci-dessus) | Les inputs de l'élève sélectionné sont débloqué lors du clique sur ``Bloquer`` |              |           |
+| Il est possible de bloquer un élève depuis le menu (cité ci-dessus) | Les inputs de l'élève sélectionné sont bloqués lors du click sur ``Bloquer`` |              |           |
+| Il est possible de débloquer un élève depuis le menu (cité ci-dessus) | Les inputs de l'élève sélectionné sont débloqués lors du click sur ``Bloquer`` |              |           |
 | Il est possible de voir l'historique des screenshots de l'élève (la dernière minute écoulée) | Les screenshots de la dernière minute écoulée sont affichés dans le GUI |      X       |     -     |
 | Accès au manuel d'utilisation (depuis menu Aide)             | Une redirection** sur la page web du manuel d'utilisation est effectuée |    GD CW     | 11.04.20  |
 
 *les champs ayant le symbole ``X`` dans la colonne ``Validé par`` ne sont pas implémentés ou que partiellement.
 
-**la machine sur laquelle on test cette fonctionnalité doit obligatoirement être connecté à internet.
+**la machine sur laquelle on teste cette fonctionnalité doit obligatoirement être connectée à internet.
