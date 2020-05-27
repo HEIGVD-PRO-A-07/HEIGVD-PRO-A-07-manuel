@@ -22,20 +22,18 @@ Au début du projet, nous avons mis en place un document contenant toutes les sp
 
 Nous avons donc pu nous baser sur ses spécifications. 
 
-Lien : 
-
-[Spécifications du projet]: https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07/blob/master/specs.md
+Lien : [Spécifications](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07/blob/master/specs.md)
 
 #### Contrôles effectués
 
-// todo : tests effectués sur le code & sur le projet 
+Dès que la communication entre le serveur et les clients a été établie, chaque nouvelle fonctionnalité implémentée a été contrôlée et validée en la testant directement sur l'infrastructure à disposition. La validation du bon fonctionnement des fonctionnalités est basée sur des critères précis (détaillés dans le répertoire "RapportdeControle").
 
-
-
-Nos exigences en terme de _gestion des logs_ nous ont permises de procéder au _debug_ et aux tests avec une visibilité en détails sur les opérations effectués par les instances de notre logiciel. Ces dernières sont décrites plus en détails dans le document de conception technique.
-
-
+Nos exigences en terme de _gestion des logs_ nous ont permis de procéder au _debug_ et aux tests avec une visibilité en détails sur les opérations effectuées par les instances de notre logiciel. Ces dernières sont décrites plus en détails dans le document "Conception technique" situé [ici](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/tree/master/rapport). 
 
 #### Vérification des protocoles
 
-- Indication de où trouver les rapports de contrôles sur Git / Google Drive ... pour que le professeur puisse voir le suivi (ajouter les liens vers Git et/ou Drive)
+Le suivi du projet peut être trouvé sur notre Git à cet [emplacement](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Organisation). On y trouve les procès verbaux et les ordres du jour liés à nos meetings. 
+
+Nous avons également gardé tout au long du projet un journal de travail rempli régulièrement par les membres du groupe. Ce journal se trouve sur notre Google Drive à cet [emplacement](https://drive.google.com/drive/u/1/folders/1sF0pq3aViTvDxD7CISzfavcqVbe3I243). 
+
+Dans ce [répertoire](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/tree/master/rapport/RapportDeControle), on peut trouver les résultats des tests effectués sur l'application pour contrôler le fonctionnement des travaux des membres du groupe. 
