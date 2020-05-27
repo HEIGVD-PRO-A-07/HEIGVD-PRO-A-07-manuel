@@ -37,7 +37,11 @@ Le délai de réponse sera plus rapide via le canal Teams.
 Avant de procéder à l'installation, il est nécessaire de s'assurer que les dépendances ci-dessous sont respectées.
 
 * Active Directory
-* ....
+* Deux groupes : Professeurs et Eleves, membres du domaine. 
+![](pro.Eleves.png)
+![](pro.Professeurs.png)
+
+* Les ordinateurs sur lesquels l'application sera installée aprtiennent au domaine (dans le cadre de PRO toutes les VMs sont déjà configurées pour).
 
 
 
@@ -149,8 +153,8 @@ L'IP fournie en 2ème argument sera celle du serveur AD sur lequel l'application
 
 ###### Client - professeur 
 
-**TODO explication :** Avoir un raccourci sur le bureau du prof et lancement avec la commande 
 
+Pour les sessions "professeur" la différence majeure sera la nécessité de créer un raccourci vers l'application sur le bureau, qui lancera l'application avec la commande : ``.\PRO.exe professeur 192.168.0.1 `` par défaut.
  ``.\PRO.exe professeur 192.168.0.1 7777``
 
 **TODO : voir si on peut fournir un launcher.bat ou avec un shorcut windows, exemple :**
