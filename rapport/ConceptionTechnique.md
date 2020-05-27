@@ -39,8 +39,6 @@ Au niveau de l'infrastructure nécessaire, il ne faut que le matériel qu'on peu
 Nous utilisons des groupes Active Directory pour la récupération des rôles / droits / groupes / etc .. (notamment les groupes "Professeurs" et "Elèves" mais également des groupes de machines pour les "salles").
 Notre logiciel serveur peut être deployé sur le serveur AD de l'école mais ce n'est pas obligatoire. Il peut être installé sur une machine dédiée (membre de l'AD) si une répartition des fonctions est souhaitée. 
 
-**// todo : à compléter pour le serveur**
-
 ## Analyse
 
 Nous souhaitons obtenir une application réalisant des captures d'écran des postes élèves, les envoyant sur le serveur qui les transmet au poste professeur ainsi qu'offrant au professeur la possibilité de bloquer les entrées souris/clavier sur les postes élèves pour encourager les étudiants à se concentrer sur l'activité de la classe. 
@@ -129,13 +127,9 @@ Parmi les vérifications effectuées sont notamment traités les formats des SID
 
 ### Gestion des logs 
 
-**// déplacer le paragraphe ??**
-
 Nous avons mis l'accent sur la gestion des logs, outil précieux pour le _debug_ mais également point nécessaire pour tout logiciel qui passe en production.
 
 À cet effet nous avons créé une classe dédiée, qui gère l'écriture dans trois fichiers qui correspondent à trois _niveaux_ de logs : les informations (_Info_), les avertissements (_Warning_) et les erreurs (_Error_). L'importance du message est gérée via ce niveau et le fichier de destination est choisi en conséquence, le log est inscrit au format `Date : Message`.   
-
-
 
 ## Conclusion
 
