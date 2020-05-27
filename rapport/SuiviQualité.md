@@ -34,4 +34,6 @@ Nos exigences en terme de _gestion des logs_ nous ont permis de procéder au _de
 
 Le suivi du projet peut être trouvé sur notre Git à cet [emplacement](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Organisation). On y trouve les procès verbaux et les ordres du jour liés à nos meetings. 
 
+Nous avons également gardé tout au long du projet un journal de travail rempli régulièrement par les membres du groupe. Ce journal se trouve sur notre Google Drive à cet [emplacement](https://drive.google.com/drive/u/1/folders/1sF0pq3aViTvDxD7CISzfavcqVbe3I243). 
+
 Dans ce [répertoire](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/tree/master/rapport/RapportDeControle), on peut trouver les résultats des tests effectués sur l'application pour contrôler le fonctionnement des travaux des membres du groupe. 
