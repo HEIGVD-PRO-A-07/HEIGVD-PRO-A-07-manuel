@@ -29,8 +29,8 @@ Dans le fichier [RapportDeTests]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-
 | Fonctionnalités à tester                            | Critère de validation                                        | Validé |
 | --------------------------------------------------- | ------------------------------------------------------------ | :----: |
 | Lancement de l'application sur le Serveur           | lors de l'exécution de ``.\PRO.exe server 7777``, le processus est actif + trames de communication visibles avec un sniffer |        |
-| Lancement de l'application sur un client professeur | lors de l'exécution de ``.\PRO.exe professeur <ipServer> 7777``, le processus est actif + trames de communication visibles avec un sniffer |        |
-| Lancement de l'application sur un client élève      | lors de l'exécution de ``.\PRO.exe professeur <ipServer> 7777``, le processus est actif + trames de communication visibles avec un sniffer |        |
+| Lancement de l'application sur un client professeur | lors de l'exécution de ``.\PRO.exe client <ipServer> 7777``, le processus est actif + trames de communication visibles avec un sniffer |        |
+| Lancement de l'application sur un client élève      | lors de l'exécution de ``.\PRO.exe client <ipServer> 7777``, le processus est actif + trames de communication visibles avec un sniffer |        |
 
 
 
