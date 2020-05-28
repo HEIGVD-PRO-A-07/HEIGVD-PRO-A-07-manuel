@@ -53,10 +53,6 @@ Pour obtenir une application fonctionnelle, nous avons fixé plusieurs objectifs
 
 ### Description de l'existant
 
-**// A COMPLETER: Ici on met les recherches effectuées, et documente ce qu'on a utilisé d'existant.**
-
-// DONE for @Sicriss, @dosseggegw1, @CassandreWoj
-
 ##### Protocole réseau
 
 Nos recherches sur les échanges client - serveur en C# nous ont très rapidement conduit sur le namespace [Sockets](https://docs.microsoft.com/en-us/dotnet/api/system.net.sockets?view=netcore-3.1) que nous avons pu utiliser.
