@@ -65,12 +65,6 @@ Nos recherches sur les échanges client - serveur en C# nous ont très rapidemen
 
 Naturellement le C# possède une implémentation native des threads que nous avons ré-utilisée telle quelle grâce à la [documentation](https://docs.microsoft.com/en-us/dotnet/api/system.threading.thread?view=netcore-3.1) de Microsoft.
 
-##### Sécurité
-
-Comme mentionné dans le cahier des charges, il était impératif de se baser sur des fonctions existantes pour la sécurité qui n'est pas un domaine que l'on pouvait se permettre de ré-implémenter.
-
- **//todo selon choix**
-
 ##### Capture d'écran
 
 La base de notre projet repose sur des captures d'écran faites sur les postes des élèves. Il nous a donc fallu implémenter la prise de ces captures. Nous nous sommes basés pour cela sur du code déjà [existant](https://www.developerfusion.com/code/4630/capture-a-screen-shot/). 
@@ -111,11 +105,15 @@ Le document "Spécifications du protocole" présent sur Github explique plus en 
 
 #### Client
 
-Nous avons implémenté l'application côté client avec un système de callbacks. Ce système nous permet d'être sûr que les fonctions s'exécutent dans un ordre précis. 
+Nous avons implémenté l'application côté client avec un système de callbacks. Ce système nous permet d'assigner des méthodes à chaque commande/réponse que le serveur peut nous transmettre et nous permet ainsi de les éxecuter en parallèle d'autres tâches si nécessaires.
 
-Toutes les actions effectuées par le professeur (GUI) utilisent les fonctions de callback. 
+Pour le cas d'un élève, l'application va simplement demander ses droits puis entrer dans une boucle d'envoi de screenshots, avec une écoute en parallèle pour un potentiel blocage ou une prise à distance.
 
-**// TO COMPLETE **
+Le cas d'un professeur est plus détaillé, nous avons toute la GUI qui commandes diverses méthodes destinées à la mettre à jour ou à changer le groupe affiché, tandis que nous avons une tâche en arrière plan qui va demander des captures d'écran en boucle lorsque la connexion à un groupe a été effectuée.
+
+Cette gestion nous permet de laisser à la vue de très simples fonctions de mises à jour ou d'envoi de commandes tandis que les réponses et le traitement peuvent être géré dans le client, cela nous a permis de répartir la logique d'une manière plus optimale entre le _main_ qui gère la vue et notre client.
+
+Lorsque le client est quitté, il doit prévenir le serveur de sa déconnection afin de ne pas utiliser des ressources inutilement, ainsi la fermeture de la GUI du professeur va envoyer _/exit_ au serveur afin de terminer la connexion. Pour l'elève c'est géré grâce à la commande _/offline_ qui fait déjà partie du flux normal.
 
 #### Serveur
 
@@ -123,7 +121,9 @@ Le serveur implémente une logique multi-threads qui écoute les connexions de c
 
 Le serveur conserve également une liste de tous les threads existants et des machines connectées, ainsi le _Worker_ qui reçoit une demande d'une machine peut contacter celui de la machine cible si cette dernière est connectée (typiquement pour une demande de contrôle à distance).
 
-Parmi les vérifications effectuées sont notamment traités les formats des SIDs et des adresses IP, le nombre de paramètres, le rôle du demandeur. Le serveur dispose d'une liste de messages d'erreur (encore une fois selon spécifications). Les ouvertures de connexion ainsi que les erreurs sont également inscrites dans le système de logs.
+Parmi les vérifications effectuées sont notamment traités les formats des SIDs et des adresses IP, le nombre de paramètres, le rôle du demandeur. Le serveur dispose d'une liste de messages d'erreur (encore une fois selon spécifications). Les ouvertures de connexion ainsi que les erreurs sont également inscrites dans le système de logs. Les erreurs sont inscrites dans la catégorie _warning_ du système de logs (voir détails de ce dernier ci-dessous) car les erreurs rencontrées comme un mauvais format de SID sont gérées par l'application. Les erreurs documentées dans la catégorie _error_ proviennent des exceptions ou autres comportement indésirables ne faisant pas partie du flux d'exécution de notre programme.
+
+Notre serveur possède une tâche en arrière plan pour chaque session elève ouverte qui va vérifier que ce dernier soit toujours connecté en vérifiant toute les minutes que le screenshot ait été actualisé, dans le cas contraire il fermera le socket afin de ne pas utiliser des ressources inutilement. Ce cas de figure entraînera le _logging_ d'une erreur car il n'est pas normal dans notre flux de travail qu'un client (professeur ou elève) se ferme sans se déconnecter (via _/offline_ ou _/exit_).
 
 ### Gestion des logs 
 
@@ -132,8 +132,6 @@ Nous avons mis l'accent sur la gestion des logs, outil précieux pour le _debug_
 À cet effet nous avons créé une classe dédiée, qui gère l'écriture dans trois fichiers qui correspondent à trois _niveaux_ de logs : les informations (_Info_), les avertissements (_Warning_) et les erreurs (_Error_). L'importance du message est gérée via ce niveau et le fichier de destination est choisi en conséquence, le log est inscrit au format `Date : Message`.   
 
 ## Conclusion
-
-**// CHECK : chiffrement implémenté ou non ??**
 
 A la fin de ce projet, nous avons obtenu une application fonctionnelle permettant de prendre des captures d'écran et de les envoyer à travers un serveur. Nous pouvons aussi bloquer/débloquer les inputs de la souris et du clavier sur les postes élèves en activant ou désactivant un bouton sur l'interface professeur. 
 
