@@ -154,7 +154,7 @@ Les points "nice to have" implémentés sont :
 
 - blocage/déblocage des inputs souris/clavier
 - prise de contrôle de la session élève à distance
-- historique des captures d'écran sauvegardé **partiellement pour l'instant**
+- historique des captures d'écran sauvegardé partiellement
 
 Les points "nice to have" non implémentés faisant partie de l'itération 2 sont les suivants : 
 
