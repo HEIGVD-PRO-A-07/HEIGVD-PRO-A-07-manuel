@@ -23,8 +23,8 @@ En cas de besoin, l'équipe de développement peut être contactée via Telegram
 Ce répertoire contient la documentation du projet "HEIGVD-PRO-A-07" réalisé dans le cours de PRO sur l'année scolaire 2019-2020 à la HEIG-VD.
 
 Sont notamment disponibles : 
-- le manuel d'installation
-- le manuel d'utilisation
+- le [manuel d'installation](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/blob/master/manuelInstallation/README.md)
+- le [manuel d'utilisation](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/blob/master/manuelUtilisation/README.md)
 - le document de conception technique
 - l'organisation du code
 - le suivi qualité du déroulement du projet
