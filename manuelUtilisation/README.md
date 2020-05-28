@@ -21,7 +21,7 @@ Cette application a donc pour but :
 
 ### Sélection du groupe
 
-![](Screenshots_Manuel_Util\PRO-Visualisateur_Win_APP.jpg)
+![](Screenshots_Manuel_Util\02.choose_group.jpg)
 
 Le professeur dispose d'une liste de groupes à sélectionner. Pour cela, il doit cliquer sur le groupe désiré dans la partie gauche de l'écran. 
 
@@ -41,7 +41,7 @@ Toutes les secondes, une capture d'écran est effectuée sur le poste surveillé
 
 ### d'un utilisateur
 
-![](Screenshots_Manuel_Util\PRO-Bloquer_Débloquer.jpg)
+![](Screenshots_Manuel_Util\04.actions_on_students.jpg)
 
 Le professeur peut décider de bloquer la session d'un des élèves cliquant sur la miniature de l'écran de l'utilisateur qu'il souhaite bloquer et en appuyant sur le bouton "Bloquer". Si le professeur effectue cette action, l'utilisateur bloqué ne pourra plus utiliser sa souris ni son clavier. Ces entrées seront refusées par l'application. 
 
@@ -49,7 +49,7 @@ Pour débloquer le poste, le professeur devra cliquer au même endroit que préc
 
 ### de tous les utilisateurs
 
-![](Screenshots_Manuel_Util\PRO-Onglet_Outils.jpg)
+![](Screenshots_Manuel_Util\05.all_lock.jpg)
 
 Pour bloquer tous les utilisateurs, le professeur doit cliquer sur l'onglet "Outils" en haut de l'écran et sélectionner "Tout bloquer". Cela empêche tous les élèves d'effectuer n'importe quelle action sur leur poste. Pour les débloquer, il faut de nouveau se référer à l'onglet "Outils" et cliquer sur "Tout débloquer". 
 
@@ -67,6 +67,6 @@ Si le professeur souhaite prendre le contrôle de la session d'un élève, il po
 
 ## Aide
 
-![](Screenshots_Manuel_Util\PRO-Onglet_Aide.jpg)
+![](Screenshots_Manuel_Util\06.help.jpg)
 
 En haut de l'écran se situe un bouton d'aide. En cliquant dessus, le professeur sera dirigé vers une page Web contenant le manuel d'utilisation.
