@@ -38,8 +38,8 @@ Avant de procéder à l'installation, il est nécessaire de s'assurer que les d�
 
 * Active Directory
 * Deux groupes : Professeurs et Eleves, membres du domaine. 
-![](pro.Eleves.png)
-![](pro.Professeurs.png)
+![](./img/pro.Eleves.png)
+![](./img/pro.Professeurs.png)
 
 * Les ordinateurs sur lesquels l'application sera installée appartiennent au domaine (dans le cadre de PRO toutes les VMs sont déjà configurées pour).
 
@@ -104,7 +104,7 @@ Pour vérifier la version de l'exécutable, voici le hash sha256 de celui-ci :
 
 L'optimal serait d'utiliser SCCM, maintenant le [gestionnaire de logiciels Windows](https://docs.microsoft.com/en-us/mem/configmgr/core/understand/what-happened-to-sccm), qui permet de créer des *packages* avec différentes options.
 
-![Local Executable](./SCCM-Admin-1.png)
+![Local Executable](./img/SCCM-Admin-1.png)
 
 Les différentes options pour lancer les programmes sont décrites par la suite.
 
@@ -159,7 +159,7 @@ Pour les sessions "professeur" la différence majeure sera la nécessité de cr�
 
 **TODO : voir si on peut fournir un launcher.bat ou avec un shorcut windows, exemple :**
 
-![exemple raccourci](./raccourci.png)
+![exemple raccourci](./img/raccourci.png)
 
 
 -----
