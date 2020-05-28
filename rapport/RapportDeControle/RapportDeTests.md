@@ -20,6 +20,10 @@
 
 
 ---
+### Tests effectués
+
+Les tests mentionnés tout au long de ce document ont été réalisés à la main. Nous avons choisi de ne pas les automatiser car nous avons rencontrés certaines difficultés dues à la gestion avec état, les tests de chaque partie dépendant des autres parties implémentées. 
+Ces difficultés d'automatisation des tests sont également relatives au contexte car nous avons travaillé dans un domaine et les tests devaient être effectués sur des machines spécifiques. 
 
 ### Listes des fonctionnalités contrôlées
 
