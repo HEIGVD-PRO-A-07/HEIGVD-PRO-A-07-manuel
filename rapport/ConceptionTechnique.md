@@ -36,8 +36,12 @@ Le blocage de session permet aussi de forcer les élèves à rester attentif à 
 #### Prérequis
 
 Au niveau de l'infrastructure nécessaire, il ne faut que le matériel qu'on peut trouver habituellement dans une salle d'informatique et dans une école. 
+
 Nous utilisons des groupes Active Directory pour la récupération des rôles / droits / groupes / etc .. (notamment les groupes "Professeurs" et "Elèves" mais également des groupes de machines pour les "salles").
+
 Notre logiciel serveur peut être deployé sur le serveur AD de l'école mais ce n'est pas obligatoire. Il peut être installé sur une machine dédiée (membre de l'AD) si une répartition des fonctions est souhaitée. 
+
+Pour que le  professeur puisse se connecter à la session de l'élève, il faut que le domaine accepte la connexion à distance sur les postes élèves par les professeurs. 
 
 ## Analyse
 
@@ -73,6 +77,10 @@ Pour implémenter le code permettant d'envoyer les captures d'écran depuis le P
 
 Pour implémenter le code qui bloque et débloque les activités de la souris et du clavier, nous avons utilisé un "hook" sur user32.dll afin de modifier directement le traitement des inputs clavier/souris au niveau logiciel. 
 Cela ne bloque pas les combinaisons de touches qui sont rattrapées directement par Windows. C'est possible mais pas du tout [recommandé](https://www.codeproject.com/questions/216453/how-to-disable-ctrlplusaltplusdel-key) car c'est une modification de Windows et de son fonctionnement interne. Ces combinaisons spéciales sont par exemple les [Secure Attention Key](https://en.wikipedia.org/wiki/Secure_attention_key)
+
+##### Prise de contrôle à distance
+
+Pour implémenter la prise de contrôle à distance, nous avons utilisé les possibilités de connexion offertes par le protocole [RDP](http://woshub.com/rds-shadow-how-to-connect-to-a-user-session-in-windows-server-2012-r2/) de Windows. 
 
 ## Implémentation
 
@@ -130,7 +138,7 @@ Nous avons mis l'accent sur la gestion des logs, outil précieux pour le _debug_
 
 ## Conclusion
 
-A la fin de ce projet, nous avons obtenu une application fonctionnelle permettant de prendre des captures d'écran et de les envoyer à travers un serveur. Nous pouvons aussi bloquer/débloquer les inputs de la souris et du clavier sur les postes élèves en activant ou désactivant un bouton sur l'interface professeur. 
+A la fin de ce projet, nous avons obtenu une application fonctionnelle permettant de prendre des captures d'écran et de les envoyer à travers un serveur. Nous pouvons aussi bloquer/débloquer les inputs de la souris et du clavier sur les postes élèves en activant ou désactivant un bouton sur l'interface professeur ainsi que permettre à un professeur de prendre le contrôle de la session active d'un élève à distance. 
 
 Nous n'avons malheureusement pas eu le temps de traiter tous les points initialement prévus "nice to have" de notre cahier des charges. Cependant, nous obtenons quand même une application fonctionnelle réalisée entièrement par nos soins. 
 
@@ -145,12 +153,12 @@ Nous sommes arrivés au bout de notre itération 1 qui contient les points suiva
 Les points "nice to have" implémentés sont :
 
 - blocage/déblocage des inputs souris/clavier
+- prise de contrôle de la session élève à distance
 - historique des captures d'écran sauvegardé **partiellement pour l'instant**
 
 Les points "nice to have" non implémentés faisant partie de l'itération 2 sont les suivants : 
 
 - chiffrement des connexions client-serveur
-- prise de contrôle de la session élève à distance
 - envoi de fichiers entre les postes élève et professeur
 
 ## Références
@@ -174,7 +182,5 @@ Blocage / déblocage d'inputs :
 - https://en.wikipedia.org/wiki/Control-Alt-Delete
 - https://en.wikipedia.org/wiki/Secure_attention_key
 
-
-
-
+Contrôle à distance : http://woshub.com/rds-shadow-how-to-connect-to-a-user-session-in-windows-server-2012-r2/
 
