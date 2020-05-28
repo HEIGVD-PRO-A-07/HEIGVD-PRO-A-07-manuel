@@ -75,7 +75,7 @@ Pour implémenter le code permettant d'envoyer les captures d'écran depuis le P
 
 ##### Blocage d'entrées souris/clavier
 
-**// todo**
+Pour implémenter le code qui bloque et débloque les activités de la souris et du clavier, nous avons utilisé un "hook" sur user32.dll faisant en sorte de laisser Windows gérer cette fonctionnalité. Cela ne bloque pas les combinaisons de touches qui sont rattrapées directement par Windows. C'est possible mais pas du tout [recommandé](https://www.codeproject.com/questions/216453/how-to-disable-ctrlplusaltplusdel-key) car c'est une modification de Windows et de son fonctionnement interne. 
 
 ## Implémentation
 
@@ -169,3 +169,14 @@ Sockets :
 Multi-threading : https://docs.microsoft.com/en-us/dotnet/api/system.threading.thread?view=netcore-3.1
 
 Capture d'écran : https://www.developerfusion.com/code/4630/capture-a-screen-shot/
+
+Blocage / déblocage d'inputs : 
+
+- https://www.codeproject.com/questions/216453/how-to-disable-ctrlplusaltplusdel-key
+- https://www.codeproject.com/Articles/23955/Running-a-Web-Site-in-Kiosk-Mode-with-C
+- https://en.wikipedia.org/wiki/Control-Alt-Delete
+
+
+
+
+
