@@ -41,7 +41,7 @@ Avant de procéder à l'installation, il est nécessaire de s'assurer que les d�
 ![](pro.Eleves.png)
 ![](pro.Professeurs.png)
 
-* Les ordinateurs sur lesquels l'application sera installée aprtiennent au domaine (dans le cadre de PRO toutes les VMs sont déjà configurées pour).
+* Les ordinateurs sur lesquels l'application sera installée appartiennent au domaine (dans le cadre de PRO toutes les VMs sont déjà configurées pour).
 
 
 
@@ -49,7 +49,7 @@ Avant de procéder à l'installation, il est nécessaire de s'assurer que les d�
 
 ##### Infrastructure
 
-- les machines utilisant cette applications doivent être dans le même sous-réseau (serveur compris)
+- les machines utilisant cette application doivent être dans le même sous-réseau (serveur compris)
 
 - Le port 7777 doit être libre afin d'être utilisé pour l'application de surveillance
 
@@ -63,7 +63,7 @@ Avant de procéder à l'installation, il est nécessaire de s'assurer que les d�
 
 ##### Active Directory
 
-Pour l'utilisation de cette application, l'infrastructure nécessite d'avoir le service Active Directory de Windows qui contient les groupes ci-dessous avec leurs utilisateurs.
+Pour l'utilisation de cette application, l'infrastructure nécessite d'avoir le service Active Directory de Windows qui contient les groupes ci-dessous avec leurs utilisateurs:
 
 
 
@@ -96,7 +96,7 @@ Pour vérifier la version de l'exécutable, voici le hash sha256 de celui-ci :
 
 ##### Configuration les SID des groupes (élèves/prof) :
 
-**TODO explication :**  il faut que dans un infra existante (où le SID du groupe qui regroupes les prof n'est pas égale au notre) indiqué comment modifier/configurer le programme pour qu'il reconnaisse correctement les profs. [idem pour les élèves]
+**TODO explication :**  il faut que, dans une infrastructure existante (où le SID du groupe qui regroupe les prof n'est pas égal au nôtre), nous indiquions comment modifier/configurer le programme pour qu'il reconnaisse correctement les profs. [idem pour les élèves]
 
 
 #### Utiliser Configuration Manager
@@ -109,7 +109,7 @@ L'optimal serait d'utiliser SCCM, maintenant le [gestionnaire de logiciels Windo
 Les différentes options pour lancer les programmes sont décrites par la suite.
 
 `configmgr` est la solution optimale du fait qu'il permet aux administrateurs de spécifier quel programme lancer, via le chemin vers l'exécutable sur une machine, ainsi que les arguments que l'on veut donner à cet exécutable (voir la suite de la documentation pour les arguments relatifs aux différentes machines).
-Il permet aussi de gérer la condition de lancement d'une application (typiquement lors de la connection d'un utilisateur), et les droits avec lesquels une application se lance.
+Il permet aussi de gérer la condition de lancement d'une application (typiquement lors de la connection d'un utilisateur) et les droits avec lesquels une application se lance.
 
 
 
@@ -133,7 +133,7 @@ Les arguments nécessaires au bon fonctionnement de l'application sont par défa
 Un port pourra être spécifié de cette façon : ``.\PRO.exe server 7777``
 À noter que le port par défaut est le ``7777``.
 
-Dans le cadre de PRO les arguments par défaut seront suffisant.
+Dans le cadre de PRO, les arguments par défaut seront suffisant.
 
 **TODO : voir si on peut fournir un launcher.bat**
 
@@ -141,9 +141,9 @@ Dans le cadre de PRO les arguments par défaut seront suffisant.
 
 ###### Client - élève
 
-Pour le bon fonctionnement de l'application côté élève, il est nécessaire de la lancer avec des droits administeur local au minimum, l'application ayant besoin d'interagir avec `kernell32.dll`.
+Pour le bon fonctionnement de l'application côté élève, il est nécessaire de la lancer avec des droits administrateur local au minimum, l'application ayant besoin d'interagir avec `kernell32.dll`.
 L'application sur un poste élève devra être démarrée avec chaque nouvelle session de la part d'un élève.
-Pour cela il serait préférable d'utiliser `SSCM`/`configmgr` qui permet toutes ces actions, ainsi que des les automatiser.
+Pour cela il serait préférable d'utiliser `SSCM`/`configmgr` qui permet toutes ces actions, ainsi que de les automatiser.
 [Voir la documentation MS](https://docs.microsoft.com/en-us/mem/configmgr/core/clients/deploy/plan/client-installation-methods)
 
 Les arguments nécessaires au bon fonctionnement de l'application sont par défaut : ``.\PRO.exe eleve 192.168.0.1`` ou ``.\PRO.exe eleve pro.local``.
