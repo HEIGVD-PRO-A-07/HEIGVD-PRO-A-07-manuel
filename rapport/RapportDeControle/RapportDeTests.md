@@ -29,7 +29,7 @@ Ces difficultés d'automatisation des tests sont également relatives au context
 
 La liste ci-dessous recense l'ensemble des fonctionnalités annoncées dans le cahier des charges de ce projet. Il est possible de voir si elles sont implémentées, leur(s) critère(s) de validation ainsi que la date à laquelle elles ont été certifié validées. Les critères de validité sont décidés avant l'implémentation de la fonctionnalité.
 
-Les grilles permettent donc de détailler à l'instant t les différentes options que notre application offre. Lors d'une modification qui peut potentiellement altérer la validité de la fonctionnalité, celle-ci est retestée afin de garantir que son implémentation est toujours efficace. Les tests effectuant des actions non visibles dans le GUI (transmission au travers de la socket) sont vérifiés à l'aide d'un sniffer de réseau.
+Les grilles permettent donc de détailler à l'instant t les différentes options que notre application offre. Lors d'une modification qui peut potentiellement altérer la validité de la fonctionnalité, celle-ci est retestée afin de garantir que son implémentation est toujours efficace. Les tests effectuant des actions non visibles dans le GUI (transmission au travers de la socket) sont vérifiés à l'aide d'un sniffer de réseau ainsi que de netcat. 
 
 
 
@@ -70,36 +70,36 @@ Les grilles permettent donc de détailler à l'instant t les différentes option
 |  Non  | Gestion de surveillance par plusieurs professeurs en même temps | -                                                            |      -      |     -     |
 |  Non  | Chiffrement des communications                               | -                                                            |      -      |     -     |
 
-*Fonctionnalité implémentée ou non
+\* Fonctionnalité implémentée ou non
 
-** le right correspond à ``student = SID élève``, ``professor = SID professeur`` ou ``non = aucun des deux précédents``
+\** Le right correspond à ``student = SID élève``, ``professor = SID professeur`` ou ``non = aucun des deux précédents``
 
 
 
 ##### Fonctionnalités du Client
 
-| Imp.* | Fonctionnalité à tester                              | Type client        | Critère de validation                                        | Validé par | Last date |
-| :---: | ---------------------------------------------------- | ------------------ | ------------------------------------------------------------ | :--------: | :-------: |
-|  Oui  | Etablissement de la communication                    | élève              | Envoi au serveur ``/online ....``                            |   GD CW    | 26.05.20  |
-|  Oui  | Identification initiale auprès du serveur            | Professeur / élève | Envoi au serveur   ``/getRights <sidUser>``                  |   GD CW    | 26.05.20  |
-|  Oui  | Termine la communication                             | élève              | Envoi au serveur ``/offline <sidComputer>``   puis ``/exit`` |     GD     | 27.05.20  |
-|  Oui  | Termine la communication lors de la fermeture du GUI | Professeur         | Envoi au serveur ``/exit`` puis ``/offline``                 |     GD     | 27.05.20  |
-|  Oui  | Envoi d'un screenshot                                | élève              | Envoi au serveur ``/sendScreen ...``                         |   GD CW    | 26.05.20  |
-|  Oui  | Demande les groupes d'élèves connectés au serveur    | Professeur         | Envoi au serveur ``/getGroups``                              |  GD CW GR  | 26.05.20  |
-|  Oui  | Demande les informations pour un groupe renseigné    | Professeur         | Envoi au serveur ``/getGroupInfo <sidGrp>``                  |  GD CW GR  | 26.05.20  |
-|  Oui  | Demande les sceenshots au serveur                    | Professeur         | Envoi au serveur ``/getScreens <sidGrp>``                    |     GR     | 26.05.20  |
-|  Oui  | Demande de bloquer les inputs d'un élève             | Professeur         | Envoi au serveur ``/lock <sid>``                             |     GD     | 27.05.20  |
-|  Oui  | Demande de bloquer les inputs de plusieurs élèves    | Professeur         | Envoi au serveur ``/lock <sid>``                             |     GD     | 27.05.20  |
-|  Oui  | Demande de débloquer les inputs d'un élève           | Professeur         | Envoi au serveur ``/unlock <sid>``                           |     GR     | 27.05.20  |
-|       | Demande de débloquer les inputs de plusieurs élèves  | Professeur         | Envoi au serveur ``/unlock <sid>``                           |            |           |
-|  Oui  | Demande de prise de contrôle                         | Professeur         | Demande des adresses IP possibles au serveur                 |            |           |
-|  Oui  | Prise de contrôle d'un élève par un professeur       | Professeur         | Connexion en RDP sur l'IP du poste élève choisi              |            |           |
-|  Oui  | Demande de l'historique des screenshots d'un élève   | Professeur         | Envoi au serveur ``/getHistory <sidComputer>``               |   GD LT    | 27.05.20  |
-|  Non  | Envoi de fichiers entre le professeur et les élèves  | Professeur / élève | Un professeur peut envoyer un fichier depuis son GUI aux élèves |     -      |     -     |
+| Imp.* | Fonctionnalité à tester                                      | Type client        | Critère de validation                                        | Validé par | Last date |
+| :---: | ------------------------------------------------------------ | ------------------ | ------------------------------------------------------------ | :--------: | :-------: |
+|  Oui  | Etablissement de la communication                            | élève              | Envoi au serveur ``/online ....``                            |   GD CW    | 26.05.20  |
+|  Oui  | Identification initiale auprès du serveur                    | Professeur / élève | Envoi au serveur   ``/getRights <sidUser>``                  |   GD CW    | 26.05.20  |
+|  Oui  | Termine la communication                                     | élève              | Envoi au serveur ``/offline <sidComputer>``   puis ``/exit`` |     GD     | 27.05.20  |
+|  Oui  | Termine la communication lors de la fermeture du GUI         | Professeur         | Envoi au serveur ``/exit`` puis ``/offline``                 |     GD     | 27.05.20  |
+|  Oui  | Envoi d'un screenshot                                        | élève              | Envoi au serveur ``/sendScreen ...``                         |   GD CW    | 26.05.20  |
+|  Oui  | Demande les groupes d'élèves connectés au serveur            | Professeur         | Envoi au serveur ``/getGroups``                              |  GD CW GR  | 26.05.20  |
+|  Oui  | Demande les informations pour un groupe renseigné            | Professeur         | Envoi au serveur ``/getGroupInfo <sidGrp>``                  |  GD CW GR  | 26.05.20  |
+|  Oui  | Demande les sceenshots au serveur                            | Professeur         | Envoi au serveur ``/getScreens <sidGrp>``                    |     GR     | 26.05.20  |
+|  Oui  | Demande de bloquer les inputs d'un élève                     | Professeur         | Envoi au serveur ``/lock <sid>``                             |     GD     | 27.05.20  |
+|  Oui  | Demande de bloquer les inputs de plusieurs élèves            | Professeur         | Envoi au serveur ``/lock <sid>``                             |     GD     | 27.05.20  |
+|  Oui  | Demande de débloquer les inputs d'un élève                   | Professeur         | Envoi au serveur ``/unlock <sid>``                           |     GR     | 27.05.20  |
+|  Oui  | Demande de débloquer les inputs de plusieurs élèves          | Professeur         | Envoi au serveur ``/unlock <sid>``                           |     GR     | 27.05.20  |
+|  Oui  | Demande d'ouverture de session à distance                    | Professeur         | Demande des adresses IP possibles au serveur                 |     GR     | 27.05.20  |
+|  Oui  | Ouverture de session à distance depuis un poste élève par un professeur | Professeur         | Connexion en RDP sur l'IP du poste élève choisi              |     GR     | 27.05.20  |
+|  Oui  | Demande de l'historique des screenshots d'un élève           | Professeur         | Envoi au serveur ``/getHistory <sidComputer>``               |   GD LT    | 27.05.20  |
+|  Non  | Envoi de fichiers entre le professeur et les élèves          | Professeur / élève | Un professeur peut envoyer un fichier depuis son GUI aux élèves |     -      |     -     |
 
-*Fonctionnalité implémentée ou non
+\* Fonctionnalité implémentée ou non
 
-s
+
 
 ##### Fonctionnalités générales du GUI
 
@@ -115,16 +115,15 @@ s
 | Il est possible d'afficher un menu avec plusieurs options lorsqu'on sélectionne un élève | Lorsqu'on clique sur un screenshot d'un élève un menu s'affiche avec diverses options |      GD      | 26.05.20  |
 | Le username de l'élève est affiché dans le menu (cité ci-dessus) | Lorsqu'on affiche le menu de l'élève, son username est affiché |      GD      | 26.05.20  |
 | Il est possible de bloquer un élève depuis le menu (cité ci-dessus) | Les inputs de l'élève sélectionné sont bloqués lors du click sur ``Bloquer`` |      GR      | 27.05.20  |
-| Bloque tous les inputs du groupe surveillé (sous outils)     | Tous les élèves du groupe ne peuvent plus effectuer d'inputs sur leur poste |              |           |
+| Bloque tous les inputs du groupe surveillé (sous outils)     | Tous les élèves du groupe ne peuvent plus effectuer d'inputs sur leur poste |      GR      | 27.05.20  |
 | Il est possible de débloquer un élève depuis le menu (cité ci-dessus) | Les inputs de l'élève sélectionné sont débloqués lors du click sur ``Bloquer`` |      GR      | 27.05.20  |
-| Débloque tous les inputs du groupe surveillé (sous outils)   | Tous les élèves du groupe peuvent réeffectuer des inputs sur leur poste |              |           |
-| Demande de connexion à un poste élève (RDP)                  | Le professeur peut choisir un élève pour se connecter en RDP (depuis le menu de l'élève) |    LS***     | 27.05.20  |
-| Prise de contrôle à distance d'un élève                      | Le professeur peut se connecter en RDP sur le poste élève choisi |    LS***     | 27.05.20  |
+| Débloque tous les inputs du groupe surveillé (sous outils)   | Tous les élèves du groupe peuvent réeffectuer des inputs sur leur poste |      GR      | 27.05.20  |
+| I                                                            | Le professeur peut choisir un élève pour se connecter en RDP (depuis le menu de l'élève) |      GR      | 27.05.20  |
+| Ouverture de session à distance à un poste élève (RDP) sur le poste d'un élève | Le professeur peut se connecter en RDP sur le poste élève choisi |      GR      | 27.05.20  |
 | Il est possible de voir l'historique des screenshots de l'élève (la dernière minute écoulée) | Les screenshots de la dernière minute écoulée sont affichés dans le GUI |    GD LT     | 27.05.20  |
 | Accès au manuel d'utilisation (depuis menu Aide)             | Une redirection** sur la page web du manuel d'utilisation est effectuée |    GD CW     | 26.05.20  |
 
-*les champs ayant le symbole ``-`` dans la colonne ``Validé par`` ne sont pas implémentés ou que partiellement.
+\* Les champs ayant le symbole ``-`` dans la colonne ``Validé par`` ne sont pas implémentés ou que partiellement.
 
-**la machine sur laquelle on teste cette fonctionnalité doit obligatoirement être connectée à internet.
+\** La machine sur laquelle on teste cette fonctionnalité doit obligatoirement être connectée à internet.
 
-\*** **AMETTREQQCHMAISJESAISPASQUOI**
