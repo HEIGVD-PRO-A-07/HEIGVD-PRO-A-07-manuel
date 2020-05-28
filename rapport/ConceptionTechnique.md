@@ -17,19 +17,17 @@
 | Laurent Thoeny                    | laurent.thoeny@heig-vd.ch          | Sicriss      |
 | Nenad Rajic (deputy project lead) | nenad.rajic@heig-vd.ch             | NR09         |
 
-## Table des matières
 
-// todo : generate on office
 
 ## Introduction
 
 Dans le cadre de ce cours PRO, nous avons imaginé un projet qui permet à un professeur de surveiller les activités de ses étudiants sur ordinateur. Nous avons implémenté un software utilisable et utile dans le cadre de nos études. De plus, notre groupe est constitué d’étudiants des filières “Sécurité de l’information” et “Réseaux et services”, donc ce projet nous a permis d’impliquer chaque membre du groupe. Ce projet a été réalisé de mi-février à fin mai, donc sur une durée de trois mois et demi. 
 
-Le projet peut être utilisé dans un environnement Windows uniquement. Chaque poste “élève” est surveillé et le poste “professeur” recense les fenêtres visibles par les étudiants sur leur ordinateur. En cas d’activité illégale de la part d’un élève, le professeur peut bloquer les entrées clavier/souris de la session.
+Le projet peut être utilisé dans un environnement Windows uniquement. Chaque poste “élève” est surveillé et le poste “professeur” recense les fenêtres visibles par les étudiants sur leur ordinateur. En cas d’activité illégale de la part d’un élève, le professeur peut bloquer les entrées clavier/souris de la session. Si le professeur souhaite télécharger un logiciel sur le poste d'un élève, il peut le faire en ouvrant une session à distance ce qui lui permet de garder ses droits sur le poste distant. 
 
 #### Public cible
 
-Ce programme est principalement destiné à être utilisé au sein d'écoles. Les professeurs pourront ainsi les laisser se familiariser avec le monde de l'informatique en toute sécurité. Cela permettrait également aux élèves d'effectuer des tests sur les ordinateurs en vérifiant qu'il n'y a pas de triche. 
+Ce programme est principalement destiné à être utilisé au sein d'écoles. Les professeurs pourront ainsi laisser les étudiants se familiariser avec le monde de l'informatique en toute sécurité. Cela permettrait également aux élèves d'effectuer des tests sur les ordinateurs en vérifiant qu'il n'y a pas de triche. 
 
 Le blocage de session permet aussi de forcer les élèves à rester attentif à ce qu'il se dit autour d'eux quand le professeur souhaite reprendre la main dans la classe.
 
@@ -39,7 +37,7 @@ Au niveau de l'infrastructure nécessaire, il ne faut que le matériel qu'on peu
 
 Nous utilisons des groupes Active Directory pour la récupération des rôles / droits / groupes / etc .. (notamment les groupes "Professeurs" et "Elèves" mais également des groupes de machines pour les "salles").
 
-Notre logiciel serveur peut être deployé sur le serveur AD de l'école mais ce n'est pas obligatoire. Il peut être installé sur une machine dédiée (membre de l'AD) si une répartition des fonctions est souhaitée. 
+Notre logiciel serveur peut être déployé sur le serveur AD de l'école mais ce n'est pas obligatoire. Il peut être installé sur une machine dédiée (membre de l'AD) si une répartition des fonctions est souhaitée. 
 
 Pour que le  professeur puisse se connecter à la session de l'élève, il faut que le domaine accepte la connexion à distance sur les postes élèves par les professeurs. 
 
@@ -78,9 +76,9 @@ Pour implémenter le code permettant d'envoyer les captures d'écran depuis le P
 Pour implémenter le code qui bloque et débloque les activités de la souris et du clavier, nous avons utilisé un "hook" sur user32.dll afin de modifier directement le traitement des inputs clavier/souris au niveau logiciel. 
 Cela ne bloque pas les combinaisons de touches qui sont rattrapées directement par Windows. C'est possible mais pas du tout [recommandé](https://www.codeproject.com/questions/216453/how-to-disable-ctrlplusaltplusdel-key) car c'est une modification de Windows et de son fonctionnement interne. Ces combinaisons spéciales sont par exemple les [Secure Attention Key](https://en.wikipedia.org/wiki/Secure_attention_key)
 
-##### Prise de contrôle à distance
+##### Ouverture de session à distance
 
-Pour implémenter la prise de contrôle à distance, nous avons utilisé les possibilités de connexion offertes par le protocole [RDP](http://woshub.com/rds-shadow-how-to-connect-to-a-user-session-in-windows-server-2012-r2/) de Windows. 
+Pour qu'un professeur puisse ouvrir une session à distance sur le poste d'un élève (afin de télécharger un logiciel en gardant ses droits, par exemple), nous avons utilisé les possibilités de connexion offertes par le protocole [RDP](http://woshub.com/rds-shadow-how-to-connect-to-a-user-session-in-windows-server-2012-r2/) de Windows. 
 
 ## Implémentation
 
@@ -106,13 +104,13 @@ C'est systématiquement le client qui se connecte au serveur et non l'inverse.
 
 Nous avons prédéfini des messages afin que le serveur confirme bonne réception des informations ou qu'il envoie une erreur si l'information n'est pas passée correctement ou pas comprise. Les messages permettent aussi au client et au serveur d'obtenir des informations et d'accuser réception. 
 
-Le document "Spécifications du protocole" présent sur Github explique plus en détails l'implémentation du protocole. 
+Le document "[Spécifications du protocole](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07/blob/master/specs.md)" présent sur Github explique plus en détails l'implémentation du protocole. 
 
 #### Client
 
-Nous avons implémenté l'application côté client avec un système de callbacks. Ce système nous permet d'assigner des méthodes à chaque commande/réponse que le serveur peut nous transmettre et nous permet ainsi de les éxecuter en parallèle d'autres tâches si nécessaires.
+Nous avons implémenté l'application côté client avec un système de callbacks. Ce système nous permet d'assigner des méthodes à chaque commande/réponse que le serveur peut nous transmettre et nous permet ainsi de les exécuter en parallèle d'autres tâches si nécessaires.
 
-Pour le cas d'un élève, l'application va simplement demander ses droits puis entrer dans une boucle d'envoi de screenshots, avec une écoute en parallèle pour un potentiel blocage ou une prise de contrôle à distance.
+Pour le cas d'un élève, l'application va simplement demander ses droits puis entrer dans une boucle d'envoi de screenshots, avec une écoute en parallèle pour un potentiel blocage ou déblocage.
 
 Le cas d'un professeur est plus détaillé, nous avons toute la GUI qui commande diverses méthodes destinées à la mettre à jour ou à changer le groupe affiché, tandis que nous avons une tâche en arrière plan qui va demander des captures d'écran en boucle lorsque la connexion à un groupe a été effectuée.
 
@@ -128,7 +126,7 @@ Le serveur conserve également une liste de tous les threads existants et des ma
 
 Parmi les vérifications effectuées sont notamment traités les formats des SIDs et des adresses IP, le nombre de paramètres, le rôle du demandeur. Le serveur dispose d'une liste de messages d'erreur (encore une fois selon spécifications). Les ouvertures de connexion ainsi que les erreurs sont également inscrites dans le système de logs. Les erreurs sont inscrites dans la catégorie _warning_ du système de logs (voir détails de ce dernier ci-dessous) car les erreurs rencontrées comme un mauvais format de SID sont gérées par l'application. Les erreurs documentées dans la catégorie _error_ proviennent des exceptions ou autres comportement indésirables ne faisant pas partie du flux d'exécution de notre programme.
 
-Notre serveur possède une tâche en arrière plan pour chaque session elève ouverte qui va vérifier que ce dernier soit toujours connecté en vérifiant toute les minutes que le screenshot ait été actualisé, dans le cas contraire il fermera le socket afin de ne pas utiliser des ressources inutilement. Ce cas de figure entraînera le _logging_ d'une erreur car il n'est pas normal dans notre flux de travail qu'un client (professeur ou elève) se ferme sans se déconnecter (via _/offline_ ou _/exit_).
+Notre serveur possède une tâche en arrière plan pour chaque session élève ouverte qui va vérifier que ce dernier soit toujours connecté en vérifiant toutes les minutes que le screenshot ait été actualisé, dans le cas contraire il fermera le socket afin de ne pas utiliser des ressources inutilement. Ce cas de figure entraînera le _logging_ d'une erreur car il n'est pas normal dans notre flux de travail qu'un client (professeur ou élève) se ferme sans se déconnecter (via _/offline_ ou _/exit_).
 
 ### Gestion des logs 
 
@@ -153,8 +151,8 @@ Nous sommes arrivés au bout de notre itération 1 qui contient les points suiva
 Les points "nice to have" implémentés sont :
 
 - blocage/déblocage des inputs souris/clavier
-- prise de contrôle de la session élève à distance
-- historique des captures d'écran sauvegardé partiellement
+- ouverture d'une session prof à distance sur le poste d'un élève
+- historique des captures d'écran sauvegardé 
 
 Les points "nice to have" non implémentés faisant partie de l'itération 2 sont les suivants : 
 
@@ -182,5 +180,5 @@ Blocage / déblocage d'inputs :
 - https://en.wikipedia.org/wiki/Control-Alt-Delete
 - https://en.wikipedia.org/wiki/Secure_attention_key
 
-Contrôle à distance : http://woshub.com/rds-shadow-how-to-connect-to-a-user-session-in-windows-server-2012-r2/
+RDP : http://woshub.com/rds-shadow-how-to-connect-to-a-user-session-in-windows-server-2012-r2/
 
