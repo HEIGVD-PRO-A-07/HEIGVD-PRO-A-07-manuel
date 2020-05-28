@@ -65,7 +65,7 @@ Les grilles permettent donc de détailler à l'instant t les différentes option
 |  Oui  | Envoie l'historique d'un ordinateur connecté au client professeur | Le serveur répond au professeur``/history <nombre> <liste des screenshots>\n`` |     LT      | 26.05.20  |
 |  Oui  | Dans le cadre de l'historique, les screenshots datant de plus d'une minute sont effacés | Ecrasement selon l'implémentation dans le code               |     LT      | 26.05.20  |
 |  Oui  | Gestion des commandes mal formulées, de paramètres manquants et autres abus de droits avec des messages d'erreurs | Génère une erreur selon l'infraction : ``/error <NoErr> <errMessage>`` | GD CW LT GR | 26.05.20  |
-|  Oui  | Gestion de la demande de prise de contrôle d'une session élève par un client professeur | Retourne la liste des IP disponibles + retourne si la session est toujours active |     LT      | 26.05.20  |
+|  Oui  | Gestion de la demande de session à distance par un client professeur | Retourne la liste des IP disponibles + retourne si la session est toujours active |     LT      | 26.05.20  |
 |  Non  | Gestion de l'envoi de fichiers par le protocole entre un élève et un professeur | -                                                            |      -      |     -     |
 |  Non  | Gestion de surveillance par plusieurs professeurs en même temps | -                                                            |      -      |     -     |
 |  Non  | Chiffrement des communications                               | -                                                            |      -      |     -     |
@@ -92,8 +92,8 @@ Les grilles permettent donc de détailler à l'instant t les différentes option
 |  Oui  | Demande de bloquer les inputs de plusieurs élèves    | Professeur         | Envoi au serveur ``/lock <sid>``                             |     GD     | 27.05.20  |
 |  Oui  | Demande de débloquer les inputs d'un élève           | Professeur         | Envoi au serveur ``/unlock <sid>``                           |     GR     | 27.05.20  |
 |       | Demande de débloquer les inputs de plusieurs élèves  | Professeur         | Envoi au serveur ``/unlock <sid>``                           |            |           |
-|  Oui  | Demande de prise de contrôle                         | Professeur         | Demande des adresses IP possibles au serveur                 |            |           |
-|  Oui  | Prise de contrôle d'un élève par un professeur       | Professeur         | Connexion en RDP sur l'IP du poste élève choisi              |            |           |
+|  Oui  | Demande de prise de session distante                         | Professeur         | Demande des adresses IP possibles au serveur                 |            |           |
+|  Oui  | Session distante par un professeur                   | Professeur         | Connexion en RDP sur l'IP du poste élève choisi              |            |           |
 |  Oui  | Demande de l'historique des screenshots d'un élève   | Professeur         | Envoi au serveur ``/getHistory <sidComputer>``               |   GD LT    | 27.05.20  |
 |  Non  | Envoi de fichiers entre le professeur et les élèves  | Professeur / élève | Un professeur peut envoyer un fichier depuis son GUI aux élèves |     -      |     -     |
 
@@ -119,7 +119,7 @@ s
 | Il est possible de débloquer un élève depuis le menu (cité ci-dessus) | Les inputs de l'élève sélectionné sont débloqués lors du click sur ``Bloquer`` |      GR      | 27.05.20  |
 | Débloque tous les inputs du groupe surveillé (sous outils)   | Tous les élèves du groupe peuvent réeffectuer des inputs sur leur poste |              |           |
 | Demande de connexion à un poste élève (RDP)                  | Le professeur peut choisir un élève pour se connecter en RDP (depuis le menu de l'élève) |    LS***     | 27.05.20  |
-| Prise de contrôle à distance d'un élève                      | Le professeur peut se connecter en RDP sur le poste élève choisi |    LS***     | 27.05.20  |
+| Session à distance sur un poste élève                      | Le professeur peut se connecter en RDP sur le poste élève choisi |    LS***     | 27.05.20  |
 | Il est possible de voir l'historique des screenshots de l'élève (la dernière minute écoulée) | Les screenshots de la dernière minute écoulée sont affichés dans le GUI |    GD LT     | 27.05.20  |
 | Accès au manuel d'utilisation (depuis menu Aide)             | Une redirection** sur la page web du manuel d'utilisation est effectuée |    GD CW     | 26.05.20  |
 

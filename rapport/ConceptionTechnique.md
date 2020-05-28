@@ -122,7 +122,7 @@ Lorsque le client est quitté, il doit prévenir le serveur de sa déconnexion a
 
 Le serveur implémente une logique multi-threads qui écoute les connexions de clients et leur dédie ensuite un _Worker_ qui va s'occuper d'une machine en particulier et recevoir les commandes émises par cette dernière. Le serveur dispose de _Handlers_ pour les commandes existantes qui vont procéder aux vérifications et opérations nécessaires puis répondre au client. Le détails des opérations, réponses et codes d'erreur est disponible dans nos spécifications de protocole.
 
-Le serveur conserve également une liste de tous les threads existants et des machines connectées, ainsi le _Worker_ qui reçoit une demande d'une machine peut contacter celui de la machine cible si cette dernière est connectée (typiquement pour une demande de contrôle à distance).
+Le serveur conserve également une liste de tous les threads existants et des machines connectées, ainsi le _Worker_ qui reçoit une demande d'une machine peut contacter celui de la machine cible si cette dernière est connectée (typiquement pour une demande de session à distance).
 
 Parmi les vérifications effectuées sont notamment traités les formats des SIDs et des adresses IP, le nombre de paramètres, le rôle du demandeur. Le serveur dispose d'une liste de messages d'erreur (encore une fois selon spécifications). Les ouvertures de connexion ainsi que les erreurs sont également inscrites dans le système de logs. Les erreurs sont inscrites dans la catégorie _warning_ du système de logs (voir détails de ce dernier ci-dessous) car les erreurs rencontrées comme un mauvais format de SID sont gérées par l'application. Les erreurs documentées dans la catégorie _error_ proviennent des exceptions ou autres comportement indésirables ne faisant pas partie du flux d'exécution de notre programme.
 
@@ -136,7 +136,7 @@ Nous avons mis l'accent sur la gestion des logs, outil précieux pour le _debug_
 
 ## Conclusion
 
-A la fin de ce projet, nous avons obtenu une application fonctionnelle permettant de prendre des captures d'écran et de les envoyer à travers un serveur. Nous pouvons aussi bloquer/débloquer les inputs de la souris et du clavier sur les postes élèves en activant ou désactivant un bouton sur l'interface professeur ainsi que permettre à un professeur de prendre le contrôle de la session active d'un élève à distance. 
+A la fin de ce projet, nous avons obtenu une application fonctionnelle permettant de prendre des captures d'écran et de les envoyer à travers un serveur. Nous pouvons aussi bloquer/débloquer les inputs de la souris et du clavier sur les postes élèves en activant ou désactivant un bouton sur l'interface professeur ainsi que permettre à un professeur d'établir une session sur le poste d'un élève à distance. 
 
 Nous n'avons malheureusement pas eu le temps de traiter tous les points initialement prévus "nice to have" de notre cahier des charges. Cependant, nous obtenons quand même une application fonctionnelle réalisée entièrement par nos soins. 
 
