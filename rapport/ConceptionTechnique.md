@@ -75,7 +75,8 @@ Pour implémenter le code permettant d'envoyer les captures d'écran depuis le P
 
 ##### Blocage d'entrées souris/clavier
 
-Pour implémenter le code qui bloque et débloque les activités de la souris et du clavier, nous avons utilisé un "hook" sur user32.dll faisant en sorte de laisser Windows gérer cette fonctionnalité. Cela ne bloque pas les combinaisons de touches qui sont rattrapées directement par Windows. C'est possible mais pas du tout [recommandé](https://www.codeproject.com/questions/216453/how-to-disable-ctrlplusaltplusdel-key) car c'est une modification de Windows et de son fonctionnement interne. 
+Pour implémenter le code qui bloque et débloque les activités de la souris et du clavier, nous avons utilisé un "hook" sur user32.dll afin de modifier directement le traitement des inputs clavier/souris au niveau logiciel. 
+Cela ne bloque pas les combinaisons de touches qui sont rattrapées directement par Windows. C'est possible mais pas du tout [recommandé](https://www.codeproject.com/questions/216453/how-to-disable-ctrlplusaltplusdel-key) car c'est une modification de Windows et de son fonctionnement interne. Ces combinaisons spéciales sont par exemple les [Secure Attention Key](https://en.wikipedia.org/wiki/Secure_attention_key)
 
 ## Implémentation
 
@@ -107,13 +108,13 @@ Le document "Spécifications du protocole" présent sur Github explique plus en 
 
 Nous avons implémenté l'application côté client avec un système de callbacks. Ce système nous permet d'assigner des méthodes à chaque commande/réponse que le serveur peut nous transmettre et nous permet ainsi de les éxecuter en parallèle d'autres tâches si nécessaires.
 
-Pour le cas d'un élève, l'application va simplement demander ses droits puis entrer dans une boucle d'envoi de screenshots, avec une écoute en parallèle pour un potentiel blocage ou une prise à distance.
+Pour le cas d'un élève, l'application va simplement demander ses droits puis entrer dans une boucle d'envoi de screenshots, avec une écoute en parallèle pour un potentiel blocage ou une prise de contrôle à distance.
 
-Le cas d'un professeur est plus détaillé, nous avons toute la GUI qui commandes diverses méthodes destinées à la mettre à jour ou à changer le groupe affiché, tandis que nous avons une tâche en arrière plan qui va demander des captures d'écran en boucle lorsque la connexion à un groupe a été effectuée.
+Le cas d'un professeur est plus détaillé, nous avons toute la GUI qui commande diverses méthodes destinées à la mettre à jour ou à changer le groupe affiché, tandis que nous avons une tâche en arrière plan qui va demander des captures d'écran en boucle lorsque la connexion à un groupe a été effectuée.
 
-Cette gestion nous permet de laisser à la vue de très simples fonctions de mises à jour ou d'envoi de commandes tandis que les réponses et le traitement peuvent être géré dans le client, cela nous a permis de répartir la logique d'une manière plus optimale entre le _main_ qui gère la vue et notre client.
+Cette gestion nous permet de laisser à la vue de très simples fonctions de mise à jour ou d'envoi de commandes tandis que les réponses et le traitement peuvent être gérés dans le client, cela nous a permis de répartir la logique d'une manière plus optimale entre le _main_ qui gère la vue et notre client.
 
-Lorsque le client est quitté, il doit prévenir le serveur de sa déconnection afin de ne pas utiliser des ressources inutilement, ainsi la fermeture de la GUI du professeur va envoyer _/exit_ au serveur afin de terminer la connexion. Pour l'elève c'est géré grâce à la commande _/offline_ qui fait déjà partie du flux normal.
+Lorsque le client est quitté, il doit prévenir le serveur de sa déconnexion afin de ne pas utiliser des ressources inutilement, ainsi la fermeture de la GUI du professeur va envoyer _/exit_ au serveur afin de terminer la connexion. Pour l'élève c'est géré grâce à la commande _/offline_ qui fait déjà partie du flux normal.
 
 #### Serveur
 
@@ -175,6 +176,7 @@ Blocage / déblocage d'inputs :
 - https://www.codeproject.com/questions/216453/how-to-disable-ctrlplusaltplusdel-key
 - https://www.codeproject.com/Articles/23955/Running-a-Web-Site-in-Kiosk-Mode-with-C
 - https://en.wikipedia.org/wiki/Control-Alt-Delete
+- https://en.wikipedia.org/wiki/Secure_attention_key
 
 
 
