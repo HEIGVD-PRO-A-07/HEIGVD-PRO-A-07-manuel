@@ -42,7 +42,7 @@ Nous avons donc pu nous baser sur ses [spécifications](https://github.com/HEIGV
 
 Dès que la communication entre le serveur et les clients a été établie, chaque nouvelle fonctionnalité implémentée a été contrôlée et validée en la testant directement sur l'infrastructure à disposition. La validation du bon fonctionnement des fonctionnalités est basée sur des critères précis (détaillés dans le répertoire "RapportdeControle").
 
-Nous avons refait des tests poussés sur l'application lors de notre dernière semaine de travail afin de nous assurer que les fonctionnalités implémentées étaient compatibles les unes avec les autres et que tout fonctionnait. 
+Nous avons refait des tests poussés sur l'application lors de notre dernière semaine de travail afin de nous assurer que les fonctionnalités implémentées étaient compatibles les unes avec les autres et que tout fonctionnait. Ces tests ont été effectués manuellement car nous n'avons pas pu les automatiser. En effet, vis-à-vis de l'automatisation, nous avons rencontrés certaines difficultés dues à la gestion avec état car les tests de chaque partie dépendent des autres parties implémentées. Ces difficultés d'automatisation des tests sont également relatives au contexte car nous avons travaillé dans un domaine et les tests devaient être effectués sur des machines spécifiques. 
 
 Nos exigences en terme de _gestion des logs_ nous ont permis de procéder au _debug_ et aux tests avec une visibilité en détails sur les opérations effectuées par les instances de notre logiciel. Ces dernières sont décrites plus en détails dans le document "[Conception technique](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/tree/master/rapport)".
 
