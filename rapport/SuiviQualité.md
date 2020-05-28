@@ -22,9 +22,7 @@
 
 ##### Organisation
 
-Chaque semaine, nous nous sommes parlé au minimum à trois reprises. Pour ces rendez-vous, le chef de projet préparait un ordre du jour disponible sur Github afin de lister les sujets de discussion que nous devions aborder et les problèmes rencontrés auxquels il fallait trouver une solution. Ces problèmes émergeaient souvent entre deux meetings et étaient d'abord communiqués de manière informelle via le groupe Telegram. 
-
-Avant le meeting, nous pouvions donc prendre connaissance de l'ordre du jour et proposer des modifications. Au terme de la réunion, un procès verbal était rédigé pour garder trace de ce qui s'était dit. 
+Chaque semaine, nous nous sommes parlé au minimum à trois reprises. Cette fréquence de discussion nous a permis de faire remonter les problèmes rapidement. Ces problèmes émergeaient souvent entre deux meetings et étaient d'abord communiqués de manière informelle via le groupe Telegram puis abordés pendant la réunion. Au terme de la plupart de ces réunions, un procès verbal était rédigé pour garder trace de ce qui s'était dit. 
 
 Un outil que nous avons énormément utilisé lors de la réalisation de ce projet est Github. Celui-ci s'est révélé extrêmement utile pour l'organisation et pas seulement pour la mise en commun du code du projet. 
 
@@ -38,15 +36,15 @@ Toujours grâce à Github, nous avons pu mettre en place un système de "peer re
 
 Au début du projet, nous avons mis en place un document contenant toutes les spécifications concernant le projet. Ce document a permis au groupe de synchroniser les manières de faire et de coder afin d'obtenir un code plus uniforme. Etant donné que nous avons codé chacun de notre côté avant la mise en commun, il fallait que chaque morceau du projet puisse fonctionner avec l'ensemble. 
 
-Nous avons donc pu nous baser sur ses spécifications. 
-
-Lien : [Spécifications](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07/blob/master/specs.md)
+Nous avons donc pu nous baser sur ses [spécifications](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07/blob/master/specs.md). 
 
 #### Contrôles effectués
 
 Dès que la communication entre le serveur et les clients a été établie, chaque nouvelle fonctionnalité implémentée a été contrôlée et validée en la testant directement sur l'infrastructure à disposition. La validation du bon fonctionnement des fonctionnalités est basée sur des critères précis (détaillés dans le répertoire "RapportdeControle").
 
-Nos exigences en terme de _gestion des logs_ nous ont permis de procéder au _debug_ et aux tests avec une visibilité en détails sur les opérations effectuées par les instances de notre logiciel. Ces dernières sont décrites plus en détails dans le document "Conception technique" situé [ici](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/tree/master/rapport). 
+Nous avons refait des tests poussés sur l'application lors de notre dernière semaine de travail afin de nous assurer que les fonctionnalités implémentées étaient compatibles les unes avec les autres et que tout fonctionnait. 
+
+Nos exigences en terme de _gestion des logs_ nous ont permis de procéder au _debug_ et aux tests avec une visibilité en détails sur les opérations effectuées par les instances de notre logiciel. Ces dernières sont décrites plus en détails dans le document "[Conception technique](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/tree/master/rapport)".
 
 #### Vérification des protocoles
 
