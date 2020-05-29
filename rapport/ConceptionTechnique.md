@@ -17,27 +17,29 @@
 | Laurent Thoeny                    | laurent.thoeny@heig-vd.ch          | Sicriss      |
 | Nenad Rajic (deputy project lead) | nenad.rajic@heig-vd.ch             | NR09         |
 
-## Table des matières
 
-// todo : generate on office
 
 ## Introduction
 
 Dans le cadre de ce cours PRO, nous avons imaginé un projet qui permet à un professeur de surveiller les activités de ses étudiants sur ordinateur. Nous avons implémenté un software utilisable et utile dans le cadre de nos études. De plus, notre groupe est constitué d’étudiants des filières “Sécurité de l’information” et “Réseaux et services”, donc ce projet nous a permis d’impliquer chaque membre du groupe. Ce projet a été réalisé de mi-février à fin mai, donc sur une durée de trois mois et demi. 
 
-Le projet peut être utilisé dans un environnement Windows uniquement. Chaque poste “élève” est surveillé et le poste “professeur” recense les fenêtres visibles par les étudiants sur leur ordinateur. En cas d’activité illégale de la part d’un élève, le professeur peut bloquer les entrées clavier/souris de la session.
+Le projet peut être utilisé dans un environnement Windows uniquement. Chaque poste “élève” est surveillé et le poste “professeur” recense les fenêtres visibles par les étudiants sur leur ordinateur. En cas d’activité illégale de la part d’un élève, le professeur peut bloquer les entrées clavier/souris de la session. Si le professeur souhaite télécharger un logiciel sur le poste d'un élève, il peut le faire en ouvrant une session à distance ce qui lui permet de garder ses droits sur le poste distant. 
 
 #### Public cible
 
-Ce programme est principalement destiné à être utilisé au sein d'écoles. Les professeurs pourront ainsi les laisser se familiariser avec le monde de l'informatique en toute sécurité. Cela permettrait également aux élèves d'effectuer des tests sur les ordinateurs en vérifiant qu'il n'y a pas de triche. 
+Ce programme est principalement destiné à être utilisé au sein d'écoles. Les professeurs pourront ainsi laisser les étudiants se familiariser avec le monde de l'informatique en toute sécurité. Cela permettrait également aux élèves d'effectuer des tests sur les ordinateurs en vérifiant qu'il n'y a pas de triche. 
 
 Le blocage de session permet aussi de forcer les élèves à rester attentif à ce qu'il se dit autour d'eux quand le professeur souhaite reprendre la main dans la classe.
 
 #### Prérequis
 
-Au niveau de l'infrastructure nécessaire, il ne faut que le matériel qu'on peut trouver habituellement dans une salle d'informatique et dans une école. Nous utilisons les groupes de l'AD pour la surveillance des postes. Le serveur de l'école sera utilisé pour l'envoi et la réception des captures d'écran.
+Au niveau de l'infrastructure nécessaire, il ne faut que le matériel qu'on peut trouver habituellement dans une salle d'informatique et dans une école. 
 
-// todo : à compléter pour le serveur
+Nous utilisons des groupes Active Directory pour la récupération des rôles / droits / groupes / etc .. (notamment les groupes "Professeurs" et "Elèves" mais également des groupes de machines pour les "salles").
+
+Notre logiciel serveur peut être déployé sur le serveur AD de l'école mais ce n'est pas obligatoire. Il peut être installé sur une machine dédiée (membre de l'AD) si une répartition des fonctions est souhaitée. 
+
+Pour que le  professeur puisse se connecter à la session de l'élève, il faut que le domaine accepte la connexion à distance sur les postes élèves par les professeurs. 
 
 ## Analyse
 
@@ -53,10 +55,6 @@ Pour obtenir une application fonctionnelle, nous avons fixé plusieurs objectifs
 
 ### Description de l'existant
 
-// A COMPLETER: Ici on met les recherches effectuées, et documente ce qu'on a utilisé d'existant.
-
-// DONE for @Sicriss, @dosseggegw1, @CassandreWoj
-
 ##### Protocole réseau
 
 Nos recherches sur les échanges client - serveur en C# nous ont très rapidement conduit sur le namespace [Sockets](https://docs.microsoft.com/en-us/dotnet/api/system.net.sockets?view=netcore-3.1) que nous avons pu utiliser.
@@ -65,13 +63,9 @@ Nos recherches sur les échanges client - serveur en C# nous ont très rapidemen
 
 Naturellement le C# possède une implémentation native des threads que nous avons ré-utilisée telle quelle grâce à la [documentation](https://docs.microsoft.com/en-us/dotnet/api/system.threading.thread?view=netcore-3.1) de Microsoft.
 
-##### Sécurité
-
-Comme mentionné dans le cahier des charges, il était impératif de se baser sur des fonctions existantes pour la sécurité qui n'est pas un domaine que l'on pouvait se permettre de ré-implémenter. Bien heureusement ...[todo selon choix]
-
 ##### Capture d'écran
 
-// todo
+La base de notre projet repose sur des captures d'écran faites sur les postes des élèves. Il nous a donc fallu implémenter la prise de ces captures. Nous nous sommes basés pour cela sur du code déjà [existant](https://www.developerfusion.com/code/4630/capture-a-screen-shot/). 
 
 ##### Envoi/réception d'images
 
@@ -79,11 +73,17 @@ Pour implémenter le code permettant d'envoyer les captures d'écran depuis le P
 
 ##### Blocage d'entrées souris/clavier
 
-// todo
+Pour implémenter le code qui bloque et débloque les activités de la souris et du clavier, nous avons utilisé un "hook" sur user32.dll afin de modifier directement le traitement des inputs clavier/souris au niveau logiciel. 
+Cela ne bloque pas les combinaisons de touches qui sont rattrapées directement par Windows. C'est possible mais pas du tout [recommandé](https://www.codeproject.com/questions/216453/how-to-disable-ctrlplusaltplusdel-key) car c'est une modification de Windows et de son fonctionnement interne. Ces combinaisons spéciales sont par exemple les [Secure Attention Key](https://en.wikipedia.org/wiki/Secure_attention_key)
+
+##### Ouverture de session à distance
+
+Pour qu'un professeur puisse ouvrir une session à distance sur le poste d'un élève (afin de télécharger un logiciel en gardant ses droits, par exemple), nous avons utilisé les possibilités de connexion offertes par le protocole [RDP](http://woshub.com/rds-shadow-how-to-connect-to-a-user-session-in-windows-server-2012-r2/) de Windows. 
+Par ailleurs, il est important de noter que pour profiter de cet fonctionnalité complètement il serait nécessaire de configurer le serveur en *Terminal Server* pour lequel des licences d'accès client *Remote Desktop Services* pour les personnes à connecter sont nécessaires.
+[Ce service](https://activate.microsoft.com/MoreInfo.aspx?lang=en-US) étant donné la nature plus sysadmin de ce service, nous avons décidé d'en rester au protocole RDP de base. 
+
 
 ## Implémentation
-
-// todo : ici on documente tout ce qui est des choix personnels d'implémentation + spécificités techniques
 
 Nous avons réalisé notre projet entièrement en C# et sur l'IDE VisualStudio. Cela nous a permis de consulter la documentation .NET existante de Microsoft sur les différents sujets abordés dans le cadre de cette application. 
 
@@ -107,15 +107,19 @@ C'est systématiquement le client qui se connecte au serveur et non l'inverse.
 
 Nous avons prédéfini des messages afin que le serveur confirme bonne réception des informations ou qu'il envoie une erreur si l'information n'est pas passée correctement ou pas comprise. Les messages permettent aussi au client et au serveur d'obtenir des informations et d'accuser réception. 
 
-Le document "Spécifications du protocole" présent sur Github explique plus en détails l'implémentation du protocole. 
+Le document "[Spécifications du protocole](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07/blob/master/specs.md)" présent sur Github explique plus en détails l'implémentation du protocole. 
 
 #### Client
 
-Nous avons implémenté l'application côté client avec un système de callbacks. Ce système nous permet d'être sûr que les fonctions s'exécutent dans un ordre précis. 
+Nous avons implémenté l'application côté client avec un système de callbacks. Ce système nous permet d'assigner des méthodes à chaque commande/réponse que le serveur peut nous transmettre et nous permet ainsi de les exécuter en parallèle d'autres tâches si nécessaires.
 
-Toutes les actions effectuées par le professeur (GUI) utilisent les fonctions de callback. 
+Pour le cas d'un élève, l'application va simplement demander ses droits puis entrer dans une boucle d'envoi de screenshots, avec une écoute en parallèle pour un potentiel blocage ou déblocage.
 
-// TO COMPLETE please ...
+Le cas d'un professeur est plus détaillé, nous avons toute la GUI qui commande diverses méthodes destinées à la mettre à jour ou à changer le groupe affiché, tandis que nous avons une tâche en arrière plan qui va demander des captures d'écran en boucle lorsque la connexion à un groupe a été effectuée.
+
+Cette gestion nous permet de laisser à la vue de très simples fonctions de mise à jour ou d'envoi de commandes tandis que les réponses et le traitement peuvent être gérés dans le client, cela nous a permis de répartir la logique d'une manière plus optimale entre le _main_ qui gère la vue et notre client.
+
+Lorsque le client est quitté, il doit prévenir le serveur de sa déconnexion afin de ne pas utiliser des ressources inutilement, ainsi la fermeture de la GUI du professeur va envoyer _/exit_ au serveur afin de terminer la connexion. Pour l'élève c'est géré grâce à la commande _/offline_ qui fait déjà partie du flux normal.
 
 #### Serveur
 
@@ -123,23 +127,19 @@ Le serveur implémente une logique multi-threads qui écoute les connexions de c
 
 Le serveur conserve également une liste de tous les threads existants et des machines connectées, ainsi le _Worker_ qui reçoit une demande d'une machine peut contacter celui de la machine cible si cette dernière est connectée (typiquement pour une demande de contrôle à distance).
 
-Parmi les vérifications effectuées sont notamment traités les formats des SIDs et des adresses IP, le nombre de paramètres, le rôle du demandeur. Le serveur dispose d'une liste de messages d'erreur (encore une fois selon spécifications). Les ouvertures de connexion ainsi que les erreurs sont également inscrites dans le système de logs.
+Parmi les vérifications effectuées sont notamment traités les formats des SIDs et des adresses IP, le nombre de paramètres, le rôle du demandeur. Le serveur dispose d'une liste de messages d'erreur (encore une fois selon spécifications). Les ouvertures de connexion ainsi que les erreurs sont également inscrites dans le système de logs. Les erreurs sont inscrites dans la catégorie _warning_ du système de logs (voir détails de ce dernier ci-dessous) car les erreurs rencontrées comme un mauvais format de SID sont gérées par l'application. Les erreurs documentées dans la catégorie _error_ proviennent des exceptions ou autres comportement indésirables ne faisant pas partie du flux d'exécution de notre programme.
 
-### Gestion des logs // todo : déplacer peut-être ?
+Notre serveur possède une tâche en arrière plan pour chaque session élève ouverte qui va vérifier que ce dernier soit toujours connecté en vérifiant toutes les minutes que le screenshot ait été actualisé, dans le cas contraire il fermera le socket afin de ne pas utiliser des ressources inutilement. Ce cas de figure entraînera le _logging_ d'une erreur car il n'est pas normal dans notre flux de travail qu'un client (professeur ou élève) se ferme sans se déconnecter (via _/offline_ ou _/exit_).
+
+### Gestion des logs 
 
 Nous avons mis l'accent sur la gestion des logs, outil précieux pour le _debug_ mais également point nécessaire pour tout logiciel qui passe en production.
 
 À cet effet nous avons créé une classe dédiée, qui gère l'écriture dans trois fichiers qui correspondent à trois _niveaux_ de logs : les informations (_Info_), les avertissements (_Warning_) et les erreurs (_Error_). L'importance du message est gérée via ce niveau et le fichier de destination est choisi en conséquence, le log est inscrit au format `Date : Message`.   
 
-
-
 ## Conclusion
 
-// todo : faire un point sur l'avancement général du projet, qu'est ce qui est fonctionnel, qu'est ce qui ne l'est pas, où on en est dans les points nice to have du CC, pourquoi (retards, difficultés techniques, ...) ...
-
-// CHECK : chiffrement implémenté ou non ??
-
-A la fin de ce projet, nous avons obtenu une application fonctionnelle permettant de prendre des captures d'écran et de les envoyer à travers un serveur. **Nous pouvons aussi bloquer/débloquer les inputs de la souris et du clavier sur les postes élèves** en activant ou désactivant un bouton sur l'interface professeur. 
+A la fin de ce projet, nous avons obtenu une application fonctionnelle permettant de prendre des captures d'écran et de les envoyer à travers un serveur. Nous pouvons aussi bloquer/débloquer les inputs de la souris et du clavier sur les postes élèves en activant ou désactivant un bouton sur l'interface professeur ainsi que permettre à un professeur de prendre le contrôle de la session active d'un élève à distance. 
 
 Nous n'avons malheureusement pas eu le temps de traiter tous les points initialement prévus "nice to have" de notre cahier des charges. Cependant, nous obtenons quand même une application fonctionnelle réalisée entièrement par nos soins. 
 
@@ -154,16 +154,34 @@ Nous sommes arrivés au bout de notre itération 1 qui contient les points suiva
 Les points "nice to have" implémentés sont :
 
 - blocage/déblocage des inputs souris/clavier
+- ouverture d'une session prof à distance sur le poste d'un élève
+- historique des captures d'écran sauvegardé 
 
 Les points "nice to have" non implémentés faisant partie de l'itération 2 sont les suivants : 
 
 - chiffrement des connexions client-serveur
-- prise de contrôle de la session élève à distance
-- historique des captures d'écran sauvegardé
 - envoi de fichiers entre les postes élève et professeur
 
 ## Références
 
-// todo : ajout des sites web utilisés (réutiliser les liens mis dans "Description de l'existant")
-
 GUI : https://www.wideagency.ch/articles/les-vraies-valeurs-de-lux-wide
+
+Sockets : 
+
+- https://docs.microsoft.com/en-us/dotnet/api/system.net.sockets?view=netcore-3.1
+
+- https://www.c-sharpcorner.com/article/socket-programming-in-C-Sharp/
+
+Multi-threading : https://docs.microsoft.com/en-us/dotnet/api/system.threading.thread?view=netcore-3.1
+
+Capture d'écran : https://www.developerfusion.com/code/4630/capture-a-screen-shot/
+
+Blocage / déblocage d'inputs : 
+
+- https://www.codeproject.com/questions/216453/how-to-disable-ctrlplusaltplusdel-key
+- https://www.codeproject.com/Articles/23955/Running-a-Web-Site-in-Kiosk-Mode-with-C
+- https://en.wikipedia.org/wiki/Control-Alt-Delete
+- https://en.wikipedia.org/wiki/Secure_attention_key
+
+RDP : http://woshub.com/rds-shadow-how-to-connect-to-a-user-session-in-windows-server-2012-r2/
+
