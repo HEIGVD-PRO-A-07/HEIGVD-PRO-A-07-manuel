@@ -82,17 +82,13 @@ Pour l'utilisation de cette application, l'infrastructure nécessite d'avoir le 
 
 ##### Téléchargement
 
-L'exécutable est disponible à l'adresse suivante :
+L'exécutable est disponible dans notre dépôt Git : 
 
-​           client : [télécharger ici](lien_bla_bla) **TODO adresse correcte**
-
-​           serveur : [télécharger ici](lien_bla_bla) **TODO adresse correcte**
+​		https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07/blob/master/Executable
 
 Pour vérifier la version de l'exécutable, voici le hash sha256 de celui-ci : 
 
-​           Hash client : **TODO hash last version**
-
-​           Hash serveur : **TODO hash last version**
+​           Hash : SHA256          083FDD369F96F6059E05E83FBEE6D8B4E046E7E80D2F3ABE5793D3A4130B41CA
 
 1) Pour récupérer le hash : ``Get-FileHash .\PRO.exe -Algorithm SHA256 | Format-List``
 
