@@ -1,4 +1,4 @@
-# Grille des tests pour la validation des fonctionnalités
+# Grille de tests pour la validation des fonctionnalités
 ##### Nom : Management de Session Windows
 
 ##### Contexte : Cours de PRO - HEIG-VD 2020
@@ -20,7 +20,9 @@
 
 ### Listes des fonctionnalités à contrôler
 
-Dans le fichier [RapportDeTests]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/blob/master/rapport/RapportDeControle/RapportDeTests.md ) vous pouvez trouver tous les tests que nous avons effectués sur l'application. Voici une grille de contrôle vierge afin que le destinataire de ce document puisse tester le bon fonctionnement de celle-ci :
+Dans le fichier [RapportDeTests]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/blob/master/rapport/RapportDeControle/RapportDeTests.md ) vous pouvez trouver tous les tests que nous avons effectués sur l'application. 
+
+Voici une grille de contrôle vierge afin que le destinataire de ce document puisse tester le bon fonctionnement de celle-ci :
 
 
 
@@ -57,3 +59,4 @@ Dans le fichier [RapportDeTests]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-
 | Accès au manuel d'utilisation (depuis menu Aide)             | Une redirection* sur la page web du manuel d'utilisation est effectuée |        |
 
 \* La machine sur laquelle on teste cette fonctionnalité doit obligatoirement être connectée à internet.
+
