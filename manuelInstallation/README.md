@@ -103,7 +103,7 @@ Pour vérifier la version de l'exécutable, voici le hash sha256 de celui-ci :
 ##### Configuration des SID des groupes (élèves/professeur) :
 
 Les groupes sont actuellement configurés dans le code, ils vont en être sortis. Si besoin est de les modifier, il faut pour l'instant effectuer les changements dans le code.
-Dans le cas où les noms des groupes AD utilisés diffèrent de ceux pensés à la base, il est possible de les modifiers dans le fichier `Protocol.cs`.
+Dans le cas où les noms des groupes AD utilisés diffèrent de ceux pensés à la base, il est possible de les modifier dans le fichier `Protocol.cs`.
 Il faudra remplacer les deux lignes : 
 
 ```c#
