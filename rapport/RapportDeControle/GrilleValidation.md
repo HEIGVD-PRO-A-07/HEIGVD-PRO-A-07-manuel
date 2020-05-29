@@ -1,4 +1,4 @@
-# Grille des tests pour la validation des fonctionnalités
+# Grille de tests pour la validation des fonctionnalités
 ##### Nom : Management de Session Windows
 
 ##### Contexte : Cours de PRO - HEIG-VD 2020
@@ -20,7 +20,9 @@
 
 ### Listes des fonctionnalités à contrôler
 
-Dans le fichier [RapportDeTests]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/blob/master/rapport/RapportDeControle/RapportDeTests.md ) vous pouvez trouver tous les tests que nous avons effectués sur l'application. Voici une grille de contrôle vierge afin que le destinataire de ce document puisse tester le bon fonctionnement de celle-ci :
+Dans le fichier [RapportDeTests]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/blob/master/rapport/RapportDeControle/RapportDeTests.md ) vous pouvez trouver tous les tests que nous avons effectués sur l'application. 
+
+Voici une grille de contrôle vierge afin que le destinataire de ce document puisse tester le bon fonctionnement de celle-ci :
 
 
 
@@ -50,9 +52,7 @@ Dans le fichier [RapportDeTests]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-
 | Le username de l'élève est affiché dans le menu (cité ci-dessus) | Lorsqu'on affiche le menu de l'élève, son username est affiché |        |
 | Il est possible de bloquer un élève depuis le menu (cité ci-dessus) | Les inputs de l'élève sélectionné sont bloqués lors du click sur ``Bloquer`` |        |
 | Il est possible de débloquer un élève depuis le menu (cité ci-dessus) | Les inputs de l'élève sélectionné sont débloqués lors du click sur ``Débloquer`` |        |
-| Il est possible de voir l'historique des screenshots de l'élève (la dernière minute écoulée) | Les screenshots de la dernière minute écoulée sont affichés dans le GUI |   *    |
-| Accès au manuel d'utilisation (depuis menu Aide)             | Une redirection** sur la page web du manuel d'utilisation est effectuée |        |
+| Il est possible de voir l'historique des screenshots de l'élève (la dernière minute écoulée) | Les screenshots de la dernière minute écoulée sont affichés dans le GUI |        |
+| Accès au manuel d'utilisation (depuis menu Aide)             | Une redirection* sur la page web du manuel d'utilisation est effectuée |        |
 
-*Fonctionnalité non implémentée pour cette version de l'application.
-
-**la machine sur laquelle on teste cette fonctionnalité doit obligatoirement être connectée à internet.
+*La machine sur laquelle on teste cette fonctionnalité doit obligatoirement être connectée à Internet.
