@@ -19,7 +19,6 @@
 
 En cas de besoin, l'équipe de développement peut être contactée via Telegram : https://t.me/joinchat/AcsX7Bzt3UJ9Oc4PGYfQIQ
 
-### 
 Ce répertoire contient la documentation du projet "HEIGVD-PRO-A-07" réalisé dans le cours de PRO sur l'année scolaire 2019-2020 à la HEIG-VD.
 
 Sont notamment disponibles : 
@@ -28,3 +27,7 @@ Sont notamment disponibles :
 - le document de conception technique
 - l'organisation du code
 - le suivi qualité du déroulement du projet
+
+##### Téléchargement des VMs
+
+Ci-dessous le lien permettant de télécharger les machines virtuelles : 
