@@ -169,7 +169,11 @@ Pour les sessions "professeur" la différence majeure sera la nécessité de cr�
 
 ### Tester l'application
 
-Trois machines virtuelles composées d'un serveur Windows et de deux clients Windows sont disponibles à l'adresse suivante : [lien pour télécharger]() **A_METTRE_LE_BON_LIEN**. L'ensemble de l'infrastructure est fonctionnel pour réaliser l'installation décrite ci-dessus. 
+Trois machines virtuelles composées d'un serveur Windows et de deux clients Windows sont disponibles pour le téléchargement à l'adresse suivante (sous la rubrique "Téléchargement des VMs") : 
+
+​		https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation
+
+L'ensemble de l'infrastructure est fonctionnel pour réaliser l'installation décrite ci-dessus. 
 
 
 
@@ -207,7 +211,7 @@ Pour tester l'application, il faudra suivre les étapes suivantes :
 
 
 
-Pour des tests plus complets, nous avons établi une liste de contrôles (grille des tests disponible en annexe). En cas d'hésitation sur l'utilisation du GUI, veuillez-vous référer au manuel d'utilisation [ici]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/tree/master/manuelUtilisation ).
+Pour des tests plus complets, nous avons établi une liste de contrôles (grille des tests disponible en annexe). En cas d'hésitation sur l'utilisation du GUI, veuillez-vous référer au manuel d'utilisation.
 
 
 
@@ -215,9 +219,9 @@ Pour des tests plus complets, nous avons établi une liste de contrôles (grille
 
 ### Annexes
 
-- Script de génération d'utilisateurs/groupes pour l'AD ([accès au script]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/blob/master/manuelInstallation/script_AD.ps)) 
+- Script de génération d'utilisateurs/groupes pour l'AD ([accès au script]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/tree/master/manuelInstallation)) 
 
-  Ce script est destiné à être lancé depuis le bureau. Il génère les utilisateurs présents dans le [fichier csv]().  
+  Ce script est destiné à être lancé depuis le bureau. Il génère les utilisateurs présents dans le [fichier csv](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/blob/master/manuelInstallation/ListUsers.csv).  
   
-- Grille des tests des fonctionnalités et leurs critères de validation [télécharger ici]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/tree/master/rapport/RapportDeControle ) **METTRE_A_JOUR_LIEN**
+- Grille vierge de tests des fonctionnalités et leurs critères de validation [télécharger ici]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/blob/master/rapport/RapportDeControle/GrilleValidation.md )
 
