@@ -19,6 +19,8 @@
 
 ----
 
+
+
 ### Support technique
 
 En cas de problème rencontré lors de l'installation, l'équipe peut être contactée par plusieurs moyens :
@@ -29,6 +31,8 @@ En cas de problème rencontré lors de l'installation, l'équipe peut être cont
   - https://t.me/joinchat/AcsX7Bzt3UJ9Oc4PGYfQIQ
 
 Le délai de réponse sera plus rapide via Telegram.
+
+
 
 ----
 
@@ -78,17 +82,13 @@ Pour l'utilisation de cette application, l'infrastructure nécessite d'avoir le 
 
 ##### Téléchargement
 
-L'exécutable est disponible à l'adresse suivante :
+L'exécutable est disponible dans notre dépôt Git : 
 
-​           client : [télécharger ici](lien_bla_bla) **TODO adresse correcte**
-
-​           serveur : [télécharger ici](lien_bla_bla) **TODO adresse correcte**
+​		https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07/blob/master/Executable
 
 Pour vérifier la version de l'exécutable, voici le hash sha256 de celui-ci : 
 
-​           Hash client : **TODO hash last version**
-
-​           Hash serveur : **TODO hash last version**
+​           Hash : SHA256          083FDD369F96F6059E05E83FBEE6D8B4E046E7E80D2F3ABE5793D3A4130B41CA
 
 1) Pour récupérer le hash : ``Get-FileHash .\PRO.exe -Algorithm SHA256 | Format-List``
 
@@ -98,7 +98,8 @@ Pour vérifier la version de l'exécutable, voici le hash sha256 de celui-ci :
 
 ##### Configuration des SID des groupes (élèves/professeur) :
 
-Dans le cas où les noms des groupes AD utilisés diffèrent de ceux pensés à la base, il est possible de les modifiers dans le fichier `Protocol.cs`.
+Les groupes sont actuellement configurés dans le code, ils vont en être sortis. Si besoin est de les modifier, il faut pour l'instant effectuer les changements dans le code.
+Dans le cas où les noms des groupes AD utilisés diffèrent de ceux pensés à la base, il est possible de les modifier dans le fichier `Protocol.cs`.
 Il faudra remplacer les deux lignes : 
 
 ```c#
@@ -107,8 +108,6 @@ protected const string PROFESSOR_GROUP_SID = "S-1-5-21-2171971402-2391369406-167
 ```
 
 par les SID souhaités.
-
-
 
 
 
@@ -163,15 +162,18 @@ L'IP fournie en 2ème argument sera celle du serveur AD sur lequel l'application
 ###### Client - professeur 
 
 Pour les sessions "professeur" la différence majeure sera la nécessité de créer un raccourci vers l'application sur le bureau, qui lancera l'application avec la commande : ``.\PRO.exe professeur 192.168.0.1 `` par défaut.
+
  ``.\PRO.exe professeur 192.168.0.1 7777``
 
-**TODO : voir si on peut fournir un launcher.bat ou avec un shorcut windows, exemple :**
 
-![exemple raccourci](./img/raccourci.png)
 
 ### Tester l'application
 
-Trois machines virtuelles composées d'un serveur Windows et de deux clients Windows sont disponibles à l'adresse suivante : [lien pour télécharger]() **A_METTRE_LE_BON_LIEN**. L'ensemble de l'infrastructure est fonctionnel pour réaliser l'installation décrite ci-dessus. 
+Trois machines virtuelles composées d'un serveur Windows et de deux clients Windows sont disponibles pour le téléchargement à l'adresse suivante (sous la rubrique "Téléchargement des VMs") : 
+
+​		https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation
+
+L'ensemble de l'infrastructure est fonctionnel pour réaliser l'installation décrite ci-dessus. 
 
 
 
@@ -185,6 +187,22 @@ Pour lancer l'application, veuillez suivre les étapes suivantes :
 
 
 
+Pour activer la connexion à distance sur un poste, il faut : 
+
+1. Dans l'explorateur de fichier, clic droit sur "Ce PC" et sélectionner "Propriétés"
+
+   ![](./img/cePC.png)
+
+2. Sélectionner "Paramètres d'utilisation à distance"
+
+   ![](./img/systeme.png)
+
+3. Cocher "Autoriser les connexions à distance à cet ordinateur"
+
+   ![](./img/proprietes.png)
+
+
+
 Pour tester l'application, il faudra suivre les étapes suivantes : 
 
 1. Depuis le GUI de l'application (sur la machine professeur), choisir un groupe d'élèves à surveiller
@@ -193,15 +211,17 @@ Pour tester l'application, il faudra suivre les étapes suivantes :
 
 
 
-Pour des tests plus complets, nous avons établi une liste de contrôles (grille des tests disponible en annexe). En cas d'hésitation sur l'utilisation du GUI, veuillez-vous référer au manuel d'utilisation [ici]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/tree/master/manuelUtilisation ).
+Pour des tests plus complets, nous avons établi une liste de contrôles (grille des tests disponible en annexe). En cas d'hésitation sur l'utilisation du GUI, veuillez-vous référer au manuel d'utilisation.
+
+
 
 -----
 
 ### Annexes
 
-- Script de génération d'utilisateurs/groupes pour l'AD ([accès au script]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/blob/master/manuelInstallation/script_AD.ps)) 
+- Script de génération d'utilisateurs/groupes pour l'AD ([accès au script]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/tree/master/manuelInstallation)) 
 
-  Ce script est destiné à être lancé depuis le bureau. Il génère les utilisateurs présents dans le [fichier csv]().  
+  Ce script est destiné à être lancé depuis le bureau. Il génère les utilisateurs présents dans le [fichier csv](https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/blob/master/manuelInstallation/ListUsers.csv).  
   
-- Grille des tests des fonctionnalités et leurs critères de validation [télécharger ici]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/tree/master/rapport/RapportDeControle ) **METTRE_A_JOUR_LIEN**
+- Grille vierge de tests des fonctionnalités et leurs critères de validation [télécharger ici]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/blob/master/rapport/RapportDeControle/GrilleValidation.md )
 

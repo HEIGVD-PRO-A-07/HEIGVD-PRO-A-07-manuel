@@ -39,11 +39,13 @@ Nous utilisons des groupes Active Directory pour la récupération des rôles / 
 
 Notre logiciel serveur peut être déployé sur le serveur AD de l'école mais ce n'est pas obligatoire. Il peut être installé sur une machine dédiée (membre de l'AD) si une répartition des fonctions est souhaitée. 
 
-Pour que le  professeur puisse se connecter à la session de l'élève, il faut que le domaine accepte la connexion à distance sur les postes élèves par les professeurs. 
+Pour que le  professeur puisse ouvrir une session à distance sur le poste de l'élève, il faut que le domaine accepte la connexion à distance sur les postes élèves par les professeurs. 
+
+
 
 ## Analyse
 
-Nous souhaitons obtenir une application réalisant des captures d'écran des postes élèves, les envoyant sur le serveur qui les transmet au poste professeur ainsi qu'offrant au professeur la possibilité de bloquer les entrées souris/clavier sur les postes élèves pour encourager les étudiants à se concentrer sur l'activité de la classe. 
+Nous souhaitions obtenir une application réalisant des captures d'écran des postes élèves, les envoyant sur le serveur qui les transmet au poste professeur ainsi qu'offrant au professeur la possibilité de bloquer les entrées souris/clavier sur les postes élèves pour encourager les étudiants à se concentrer sur l'activité de la classe. Le professeur peut également ouvrir une session à distance sur le poste distant d'un élève. 
 
 Pour obtenir une application fonctionnelle, nous avons fixé plusieurs objectifs :
 
@@ -52,6 +54,9 @@ Pour obtenir une application fonctionnelle, nous avons fixé plusieurs objectifs
 - envoi des captures d'écran sur un serveur
 - envoi des captures d'écran au poste professeur depuis le serveur
 - blocage des entrées souris / clavier sur les postes élèves depuis le poste professeur
+- ouverture de session du professeur sur un poste distant (initialement l'objectif était de permettre au professeur de prendre le contrôle d'une session élève à distance, nous avons légèrement modifié notre cahier des charges suite à des difficultés techniques pour implémenter cela)
+
+
 
 ### Description de l'existant
 
@@ -81,6 +86,8 @@ Cela ne bloque pas les combinaisons de touches qui sont rattrapées directement 
 Pour qu'un professeur puisse ouvrir une session à distance sur le poste d'un élève (afin de télécharger un logiciel en gardant ses droits, par exemple), nous avons utilisé les possibilités de connexion offertes par le protocole [RDP](http://woshub.com/rds-shadow-how-to-connect-to-a-user-session-in-windows-server-2012-r2/) de Windows. 
 Par ailleurs, il est important de noter que pour profiter de cette fonctionnalité complètement, il serait nécessaire de configurer le serveur en *Terminal Server* pour lequel des licences d'accès client *Remote Desktop Services* pour les personnes à connecter sont nécessaires.
 Etant donné la nature plus sysadmin de [ce service](https://activate.microsoft.com/MoreInfo.aspx?lang=en-US), nous avons décidé d'en rester au protocole RDP de base. 
+
+
 
 ## Implémentation
 
@@ -136,30 +143,42 @@ Nous avons mis l'accent sur la gestion des logs, outil précieux pour le _debug_
 
 À cet effet nous avons créé une classe dédiée, qui gère l'écriture dans trois fichiers qui correspondent à trois _niveaux_ de logs : les informations (_Info_), les avertissements (_Warning_) et les erreurs (_Error_). L'importance du message est gérée via ce niveau et le fichier de destination est choisi en conséquence, le log est inscrit au format `Date : Message`.   
 
+
+
 ## Conclusion
 
-A la fin de ce projet, nous avons obtenu une application fonctionnelle permettant de prendre des captures d'écran et de les envoyer à travers un serveur. Nous pouvons aussi bloquer/débloquer les inputs de la souris et du clavier sur les postes élèves en activant ou désactivant un bouton sur l'interface professeur ainsi que permettre à un professeur de prendre le contrôle de la session active d'un élève à distance. 
+Au terme de ce projet, nous avons obtenu une application fonctionnelle permettant de prendre des captures d'écran et de les envoyer à travers un serveur. Nous pouvons aussi bloquer/débloquer les inputs de la souris et du clavier sur les postes élèves en activant/désactivant un bouton sur l'interface professeur ainsi que permettre à un professeur de prendre le contrôle de la session active d'un élève à distance. 
 
 Nous n'avons malheureusement pas eu le temps de traiter tous les points initialement prévus "nice to have" de notre cahier des charges. Cependant, nous obtenons quand même une application fonctionnelle réalisée entièrement par nos soins. 
+
+Au fil du projet, nous avons rencontré quelques difficultés, notamment avec notre objectif de prise de contrôle à distance d'une session élève. Nous n'avons pas réussi à implémenter complètement cette fonctionnalité mais nous avons décidé de changer légèrement d'objectif et de garder les parties qui étaient déjà implémentées afin de permettre au professeur d'ouvrir une session à distance sur le poste d'un élève. Nous avons donc légèrement dévié de notre cahier des charges prévu initialement sur ce point-là. 
+
+
 
 Nous sommes arrivés au bout de notre itération 1 qui contient les points suivants : 
 
 - Programme installable
 - Communication avec le serveur
-- Programme élève communique avec le serveur
-- Programme prof communique avec le serveur
+- Client élève communique avec le serveur
+- Client prof communique avec le serveur
 - Affichage chez le prof des écrans élèves
+
+
 
 Les points "nice to have" implémentés sont :
 
 - blocage/déblocage des inputs souris/clavier
 - ouverture d'une session prof à distance sur le poste d'un élève
-- historique des captures d'écran sauvegardé 
+- historique des captures d'écran sauvegardé (pour la dernière minute écoulée)
+
+
 
 Les points "nice to have" non implémentés faisant partie de l'itération 2 sont les suivants : 
 
 - chiffrement des connexions client-serveur
 - envoi de fichiers entre les postes élève et professeur
+
+
 
 ## Références
 

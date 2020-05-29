@@ -118,7 +118,7 @@ Les grilles permettent donc de détailler à l'instant t les différentes option
 | Bloque tous les inputs du groupe surveillé (sous outils)     | Tous les élèves du groupe ne peuvent plus effectuer d'inputs sur leur poste |      GR      | 27.05.20  |
 | Il est possible de débloquer un élève depuis le menu (cité ci-dessus) | Les inputs de l'élève sélectionné sont débloqués lors du click sur ``Bloquer`` |      GR      | 27.05.20  |
 | Débloque tous les inputs du groupe surveillé (sous outils)   | Tous les élèves du groupe peuvent réeffectuer des inputs sur leur poste |      GR      | 27.05.20  |
-| I                                                            | Le professeur peut choisir un élève pour se connecter en RDP (depuis le menu de l'élève) |      GR      | 27.05.20  |
+| Demande d'ouverture de session à distance sur un poste élève depuis le menu (cité ci-dessus) | Le professeur peut choisir un élève pour se connecter en RDP (depuis le menu de l'élève) |      GR      | 27.05.20  |
 | Ouverture de session à distance à un poste élève (RDP) sur le poste d'un élève | Le professeur peut se connecter en RDP sur le poste élève choisi |      GR      | 27.05.20  |
 | Il est possible de voir l'historique des screenshots de l'élève (la dernière minute écoulée) | Les screenshots de la dernière minute écoulée sont affichés dans le GUI |    GD LT     | 27.05.20  |
 | Accès au manuel d'utilisation (depuis menu Aide)             | Une redirection** sur la page web du manuel d'utilisation est effectuée |    GD CW     | 26.05.20  |
