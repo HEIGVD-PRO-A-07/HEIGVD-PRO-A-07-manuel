@@ -31,3 +31,4 @@ Sont notamment disponibles :
 ##### Téléchargement des VMs
 
 Ci-dessous le lien permettant de télécharger les machines virtuelles : 
+https://www.swisstransfer.com/d/40116c22-8b23-4d3d-b628-ace035b062d1
