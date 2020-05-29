@@ -31,8 +31,8 @@ Voici une grille de contrôle vierge afin que le destinataire de ce document pui
 | Fonctionnalités à tester                            | Critère de validation                                        | Validé |
 | --------------------------------------------------- | ------------------------------------------------------------ | :----: |
 | Lancement de l'application sur le Serveur           | lors de l'exécution de ``.\PRO.exe server 7777``, le processus est actif + trames de communication visibles avec un sniffer |        |
-| Lancement de l'application sur un client professeur | lors de l'exécution de ``.\PRO.exe professeur <ipServer> 7777``, le processus est actif + trames de communication visibles avec un sniffer |        |
-| Lancement de l'application sur un client élève      | lors de l'exécution de ``.\PRO.exe professeur <ipServer> 7777``, le processus est actif + trames de communication visibles avec un sniffer |        |
+| Lancement de l'application sur un client professeur | lors de l'exécution de ``.\PRO.exe client <ipServer> 7777``, le processus est actif + trames de communication visibles avec un sniffer |        |
+| Lancement de l'application sur un client élève      | lors de l'exécution de ``.\PRO.exe client <ipServer> 7777``, le processus est actif + trames de communication visibles avec un sniffer |        |
 
 
 
@@ -41,18 +41,22 @@ Voici une grille de contrôle vierge afin que le destinataire de ce document pui
 | Fonctionnalité à tester                                      | Critère de validation                                        | Validé |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | :----: |
 | L'application a une interface pour un utilisateur du groupe professeur | Affichage du GUI lorsqu'un professeur lance l'application    |        |
+| Le processus est terminé lors de la fermeture de l'application (croix) | Termine le processus une fois la croix cliquée               |        |
 | Liste de groupes d'élèves connectés                          | L'application affiche tous les groupes d'élèves actuellement connectés |        |
 | Mise à jour de la liste de groupes d'élèves connectés (sous fichier) | Lorsqu'on clique sur ``Mettre à jour les groupes``, la liste est mise à jour |        |
 | Sélection d'un groupe d'élèves                               | Lorsqu'on sélectionne un groupe d'élèves, les écrans des élèves sont affichés |        |
 | Affichage d'un screenshot par élève                          | Chaque écran d'élève du groupe est affiché 1x                |        |
 | Chaque écran d'élève a une légende avec le username de l'utilisateur | Chaque screenshot possède une légende avec le username de l'étudiant |        |
-| Bloque tous les inputs du groupe surveillé (sous outils)     | Tous les élèves du groupe ne peuvent plus effectuer d'inputs sur leur poste |        |
-| Débloque tous les inputs du groupe surveillé (sous outils)   | Tous les élèves du groupe peuvent réeffectuer des inputs sur leur poste |        |
 | Il est possible d'afficher un menu avec plusieurs options lorsqu'on sélectionne un élève | Lorsqu'on clique sur un screenshot d'un élève un menu s'affiche avec diverses options |        |
 | Le username de l'élève est affiché dans le menu (cité ci-dessus) | Lorsqu'on affiche le menu de l'élève, son username est affiché |        |
 | Il est possible de bloquer un élève depuis le menu (cité ci-dessus) | Les inputs de l'élève sélectionné sont bloqués lors du click sur ``Bloquer`` |        |
-| Il est possible de débloquer un élève depuis le menu (cité ci-dessus) | Les inputs de l'élève sélectionné sont débloqués lors du click sur ``Débloquer`` |        |
+| Bloque tous les inputs du groupe surveillé (sous outils)     | Tous les élèves du groupe ne peuvent plus effectuer d'inputs sur leur poste |        |
+| Il est possible de débloquer un élève depuis le menu (cité ci-dessus) | Les inputs de l'élève sélectionné sont débloqués lors du click sur ``Bloquer`` |        |
+| Débloque tous les inputs du groupe surveillé (sous outils)   | Tous les élèves du groupe peuvent réeffectuer des inputs sur leur poste |        |
+| Il est possible de lancer une ouverture de session à distance sur un poste élève depuis le menu  (cité plus haut) | Le professeur peut choisir un élève pour se connecter en RDP (depuis le menu de l'élève) |        |
+| Ouverture de session à distance à un poste élève (RDP) sur le poste d'un élève | Le professeur peut se connecter en RDP sur le poste élève choisi |        |
 | Il est possible de voir l'historique des screenshots de l'élève (la dernière minute écoulée) | Les screenshots de la dernière minute écoulée sont affichés dans le GUI |        |
 | Accès au manuel d'utilisation (depuis menu Aide)             | Une redirection* sur la page web du manuel d'utilisation est effectuée |        |
 
-*La machine sur laquelle on teste cette fonctionnalité doit obligatoirement être connectée à Internet.
+\* La machine sur laquelle on teste cette fonctionnalité doit obligatoirement être connectée à internet.
+
