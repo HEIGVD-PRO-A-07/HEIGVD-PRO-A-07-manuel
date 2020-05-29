@@ -182,15 +182,15 @@ Pour activer la connexion à distance sur un poste, il faut :
 
 1. Dans l'explorateur de fichier, clic droit sur "Ce PC" et sélectionner "Propriétés"
 
-   ![](./img\cePC.png)
+   ![](./img/cePC.png)
 
 2. Sélectionner "Paramètres d'utilisation à distance"
 
-   ![](./img\système.png)
+   ![](./img/systeme.png)
 
 3. Cocher "Autoriser les connexions à distance à cet ordinateur"
 
-   ![](./img\propriétés.png)
+   ![](./img/proprietes.png)
 
 
 
