@@ -19,6 +19,8 @@
 
 ----
 
+
+
 ### Support technique
 
 En cas de problème rencontré lors de l'installation, l'équipe peut être contactée par plusieurs moyens :
@@ -29,6 +31,8 @@ En cas de problème rencontré lors de l'installation, l'équipe peut être cont
   - https://t.me/joinchat/AcsX7Bzt3UJ9Oc4PGYfQIQ
 
 Le délai de réponse sera plus rapide via Telegram.
+
+
 
 ----
 
@@ -98,8 +102,7 @@ Pour vérifier la version de l'exécutable, voici le hash sha256 de celui-ci :
 
 ##### Configuration des SID des groupes (élèves/professeur) :
 
-**TODO explication :**  il faut que, dans une infrastructure existante (où le SID du groupe qui regroupe les prof n'est pas égal au nôtre), nous indiquions comment modifier/configurer le programme pour qu'il reconnaisse correctement les profs. [idem pour les élèves]
-
+Les groupes sont actuellement configurés dans le code, ils vont en être sortis. Si besoin est de les modifier, il faut pour l'instant effectuer les changements dans le code, 
 
 
 
@@ -154,11 +157,10 @@ L'IP fournie en 2ème argument sera celle du serveur AD sur lequel l'application
 ###### Client - professeur 
 
 Pour les sessions "professeur" la différence majeure sera la nécessité de créer un raccourci vers l'application sur le bureau, qui lancera l'application avec la commande : ``.\PRO.exe professeur 192.168.0.1 `` par défaut.
+
  ``.\PRO.exe professeur 192.168.0.1 7777``
 
-**TODO : voir si on peut fournir un launcher.bat ou avec un shorcut windows, exemple :**
 
-![exemple raccourci](./img/raccourci.png)
 
 ### Tester l'application
 
@@ -176,6 +178,22 @@ Pour lancer l'application, veuillez suivre les étapes suivantes :
 
 
 
+Pour activer la connexion à distance sur un poste, il faut : 
+
+1. Dans l'explorateur de fichier, clic droit sur "Ce PC" et sélectionner "Propriétés"
+
+   ![](./img\cePC.png)
+
+2. Sélectionner "Paramètres d'utilisation à distance"
+
+   ![](./img\système.png)
+
+3. Cocher "Autoriser les connexions à distance à cet ordinateur"
+
+   ![](./img\propriétés.png)
+
+
+
 Pour tester l'application, il faudra suivre les étapes suivantes : 
 
 1. Depuis le GUI de l'application (sur la machine professeur), choisir un groupe d'élèves à surveiller
@@ -185,6 +203,8 @@ Pour tester l'application, il faudra suivre les étapes suivantes :
 
 
 Pour des tests plus complets, nous avons établi une liste de contrôles (grille des tests disponible en annexe). En cas d'hésitation sur l'utilisation du GUI, veuillez-vous référer au manuel d'utilisation [ici]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/tree/master/manuelUtilisation ).
+
+
 
 -----
 
