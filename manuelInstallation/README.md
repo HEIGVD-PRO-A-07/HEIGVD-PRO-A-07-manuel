@@ -111,6 +111,7 @@ par les SID souhaités.
 
 
 
+
 #### Utiliser Configuration Manager
 
 
@@ -203,3 +204,4 @@ Pour des tests plus complets, nous avons établi une liste de contrôles (grille
   Ce script est destiné à être lancé depuis le bureau. Il génère les utilisateurs présents dans le [fichier csv]().  
   
 - Grille des tests des fonctionnalités et leurs critères de validation [télécharger ici]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/tree/master/rapport/RapportDeControle ) **METTRE_A_JOUR_LIEN**
+
