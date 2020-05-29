@@ -84,6 +84,8 @@ Cela ne bloque pas les combinaisons de touches qui sont rattrapées directement 
 ##### Ouverture de session à distance
 
 Pour qu'un professeur puisse ouvrir une session à distance sur le poste d'un élève (afin de télécharger un logiciel en gardant ses droits, par exemple), nous avons utilisé les possibilités de connexion offertes par le protocole [RDP](http://woshub.com/rds-shadow-how-to-connect-to-a-user-session-in-windows-server-2012-r2/) de Windows. 
+Par ailleurs, il est important de noter que pour profiter de cette fonctionnalité complètement, il serait nécessaire de configurer le serveur en *Terminal Server* pour lequel des licences d'accès client *Remote Desktop Services* pour les personnes à connecter sont nécessaires.
+Etant donné la nature plus sysadmin de [ce service](https://activate.microsoft.com/MoreInfo.aspx?lang=en-US), nous avons décidé d'en rester au protocole RDP de base. 
 
 
 
@@ -199,5 +201,7 @@ Blocage / déblocage d'inputs :
 - https://en.wikipedia.org/wiki/Control-Alt-Delete
 - https://en.wikipedia.org/wiki/Secure_attention_key
 
-RDP : http://woshub.com/rds-shadow-how-to-connect-to-a-user-session-in-windows-server-2012-r2/
+RDP : 
+- http://woshub.com/rds-shadow-how-to-connect-to-a-user-session-in-windows-server-2012-r2/
+- https://activate.microsoft.com/MoreInfo.aspx?lang=en-US
 

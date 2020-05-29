@@ -84,15 +84,15 @@ Pour l'utilisation de cette application, l'infrastructure nécessite d'avoir le 
 
 L'exécutable est disponible à l'adresse suivante :
 
-​			client : [télécharger ici](lien_bla_bla) **TODO adresse correcte**
+​           client : [télécharger ici](lien_bla_bla) **TODO adresse correcte**
 
-​			serveur : [télécharger ici](lien_bla_bla) **TODO adresse correcte**
+​           serveur : [télécharger ici](lien_bla_bla) **TODO adresse correcte**
 
 Pour vérifier la version de l'exécutable, voici le hash sha256 de celui-ci : 
 
-​			Hash client : **TODO hash last version**
+​           Hash client : **TODO hash last version**
 
-​			Hash serveur : **TODO hash last version**
+​           Hash serveur : **TODO hash last version**
 
 1) Pour récupérer le hash : ``Get-FileHash .\PRO.exe -Algorithm SHA256 | Format-List``
 
@@ -102,7 +102,16 @@ Pour vérifier la version de l'exécutable, voici le hash sha256 de celui-ci :
 
 ##### Configuration des SID des groupes (élèves/professeur) :
 
-Les groupes sont actuellement configurés dans le code, ils vont en être sortis. Si besoin est de les modifier, il faut pour l'instant effectuer les changements dans le code, 
+Les groupes sont actuellement configurés dans le code, ils vont en être sortis. Si besoin est de les modifier, il faut pour l'instant effectuer les changements dans le code.
+Dans le cas où les noms des groupes AD utilisés diffèrent de ceux pensés à la base, il est possible de les modifier dans le fichier `Protocol.cs`.
+Il faudra remplacer les deux lignes : 
+
+```c#
+protected const string STUDENT_GROUP_SID = "S-1-5-21-2171971402-2391369406-1675826876-1105";
+protected const string PROFESSOR_GROUP_SID = "S-1-5-21-2171971402-2391369406-1675826876-1106";
+```
+
+par les SID souhaités.
 
 
 
@@ -215,3 +224,4 @@ Pour des tests plus complets, nous avons établi une liste de contrôles (grille
   Ce script est destiné à être lancé depuis le bureau. Il génère les utilisateurs présents dans le [fichier csv]().  
   
 - Grille des tests des fonctionnalités et leurs critères de validation [télécharger ici]( https://github.com/HEIGVD-PRO-A-07/HEIGVD-PRO-A-07-Documentation/tree/master/rapport/RapportDeControle ) **METTRE_A_JOUR_LIEN**
+
